@@ -3,10 +3,77 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mdixWindow="clr-namespace:AMD"
+        xmlns:mdix="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:AMD"
         mc:Ignorable="d"
-        Title="Welcome to AMD" Height="450" Width="800">
-    <Grid>
-        <TextBlock Text="Gargai Enterprise" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
-    </Grid>
+        Style="{StaticResource MaterialDesignWindow}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{StaticResource MaterialDesignBody}"
+        mdixWindow:WindowEx.ShowMinimizeButton="True"
+        mdixWindow:WindowEx.ShowMaximizeButton="True"
+        Title="AMD Enterprise" Height="650" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        AutomationProperties.Name="{Binding Title, RelativeSource={RelativeSource Self}}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{materialDesign:MaterialDesignFont}">
+
+    <!--You only need to specify header content if you want to put some custom stuff in the color zone at the top. Otherwise just set Title.-->
+    <mdixWindow:MaterialDesignWindow.HeaderContent>
+        <Grid>
+            <!--<ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" HorizontalAlignment="Left" WindowChrome.IsHitTestVisibleInChrome="True" 
+                          x:Name="MenuToggleButton" />-->
+            <TextBlock Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" HorizontalAlignment="Left" FontSize="20" Margin="10 0 0 0"/>
+        </Grid>
+
+    </mdixWindow:MaterialDesignWindow.HeaderContent>
+    <Window.Content>
+        <!--<mdix:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}">
+            <mdix:DrawerHost.LeftDrawerContent>
+                <TextBlock Width="250" TextWrapping="Wrap" Text="Some left drawer content here. Perhaps navigation options?" 
+                           VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
+            </mdix:DrawerHost.LeftDrawerContent>-->
+        <Grid>
+            <!--<Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>-->
+            
+            <ScrollViewer
+                                  materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
+                                  HorizontalScrollBarVisibility="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.HorizontalScrollBarVisibilityRequirement}"
+                                  VerticalScrollBarVisibility="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.VerticalScrollBarVisibilityRequirement}" 
+                                  Padding="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.MarginRequirement}">
+                <Grid>
+                    <ListBox 
+                        x:Name="DemoItemsListBox" 
+                        Margin="0 16 0 16" FlowDirection="LeftToRight"
+                        SelectedIndex="{Binding SelectedIndex}"
+                        SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}"
+                        ItemsSource="{Binding DemoItems}"
+                        AutomationProperties.Name="DemoPagesListBox" IsEnabled="False">
+                        <ListBox.Resources>
+                            <Style TargetType="ScrollBar" BasedOn="{StaticResource MaterialDesignScrollBarMinimal}"/>
+                        </ListBox.Resources>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate DataType="domain:DemoItem">
+                                <TextBlock Text="{Binding Name}" Margin="32 0 32 0" AutomationProperties.AutomationId="DemoItemPage" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ContentControl Content="{Binding SelectedItem.Content, UpdateSourceTrigger=PropertyChanged}" />
+
+                </Grid>
+            </ScrollViewer>
+
+            <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}" x:Name="MainSnackbar"
+                                            />
+        </Grid>
+        <!--</mdix:DrawerHost>-->
+    </Window.Content>
 </Window>

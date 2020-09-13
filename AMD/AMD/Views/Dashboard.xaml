@@ -1,0 +1,83 @@
+﻿<Page x:Class="AMD.Views.Dashboard"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AMD.Views" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Dashboard" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Horizontal"
+                    Margin="10 20 10 20">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="CheckCircle" x:Name="db"
+                                VerticalAlignment="Center" Height="20" Width="20"/>
+                    <Button x:Name="btnDashboard"
+    Style="{StaticResource MaterialDesignRaisedButton}"
+    Width="150" Height="70" Click="btnDashboard_Click"
+    ToolTip="Dashbord" Background="BlueViolet">
+                        Dashboard
+                    </Button>
+                </StackPanel>
+
+                <StackPanel Margin="20 0" Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="CheckCircle" x:Name="it" 
+                                VerticalAlignment="Center" Height="20" Width="20"/>
+                    <Button x:Name="btnItems"
+    Style="{StaticResource MaterialDesignRaisedButton}"
+    Width="150" Height="70" Click="btnItems_Click"
+    ToolTip="Items" >
+                        Items
+                    </Button>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="CheckCircle" x:Name="cm"
+                                VerticalAlignment="Center" Height="20" Width="20"/>
+                    <Button x:Name="btnCustomers"
+    Style="{StaticResource MaterialDesignRaisedButton}"
+    Width="150" Height="70" Click="btnCustomers_Click"
+    ToolTip="Customers" Background="Brown">
+                        Customers
+                    </Button>
+                </StackPanel>
+
+                <StackPanel  Margin="20 0" Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="CheckCircle" x:Name="rc"
+                                VerticalAlignment="Center" Height="20" Width="20"/>
+                    <Button x:Name="btnRecords"
+    Style="{StaticResource MaterialDesignRaisedButton}"
+    Width="150" Height="70" Click="btnRecords_Click"
+    ToolTip="Records" Background="DarkCyan">
+                        Records
+                    </Button>
+                </StackPanel>
+
+                <materialDesign:PopupBox PopupMode="Click" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <materialDesign:PopupBox.PopupContent>
+                        <Menu>
+                            <Menu.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel />
+                                </ItemsPanelTemplate>
+                            </Menu.ItemsPanel>
+                            <MenuItem Header="Account" />
+                            <MenuItem Header="About" />
+                        </Menu>
+                    </materialDesign:PopupBox.PopupContent>
+                </materialDesign:PopupBox>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <DataGrid x:Name="Items" />
+        </Grid>
+    </Grid>
+</Page>

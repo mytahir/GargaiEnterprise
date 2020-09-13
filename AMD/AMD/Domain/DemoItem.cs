@@ -14,12 +14,16 @@ namespace AMD.Domain
         private ScrollBarVisibility _verticalScrollBarVisibilityRequirement;
         private Thickness _marginRequirement = new Thickness(16);
 
-        public DemoItem(string name, object content, IEnumerable<DocumentationLink> documentation)
+        public DemoItem(object content)
         {
-            _name = name;
             Content = content;
-            Documentation = documentation;
         }
+        //public DemoItem(string name, object content, IEnumerable<DocumentationLink> documentation)
+        //{
+        //    _name = name;
+        //    Content = content;
+        //    Documentation = documentation;
+        //}
 
         public string Name
         {
@@ -51,7 +55,7 @@ namespace AMD.Domain
             set { this.MutateVerbose(ref _marginRequirement, value, RaisePropertyChanged()); }
         }
 
-        public IEnumerable<DocumentationLink> Documentation { get; }
+        //public IEnumerable<DocumentationLink> Documentation { get; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

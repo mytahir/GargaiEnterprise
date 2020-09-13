@@ -1,8 +1,12 @@
-﻿using AMD.Domain;
+﻿using System;
+using AMD.Domain;
 using MaterialDesignThemes.Wpf;
+using MahApps.Metro.Controls;
+using System.Windows.Navigation;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using AMD.Navigation;
 
 namespace AMD
 {
@@ -11,6 +15,8 @@ namespace AMD
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly Navigation.NavigationServiceEx _navigationServiceEx;
+
         public static Snackbar Snackbar;
 
         public MainWindow()
@@ -33,18 +39,18 @@ namespace AMD
             PaletteHelper paletteHelper = new PaletteHelper();
             ITheme theme = paletteHelper.GetTheme();
 
-            //DarkModeToggleButton.IsChecked = theme.GetBaseTheme() == BaseTheme.Dark;
 
-            //if (paletteHelper.GetThemeManager() is { } themeManager)
-            //{
-            //    themeManager.ThemeChanged += (_, e) =>
-            //    {
-            //        DarkModeToggleButton.IsChecked = e.NewTheme?.GetBaseTheme() == BaseTheme.Dark;
-            //    };
-            //}
+            this._navigationServiceEx = NavigationServiceEx.Instance;
+            this._navigationServiceEx.Navigated += this.NavigationServiceEx_OnNavigated;
+            this.RootGrid.Children.Add(this._navigationServiceEx.Frame);
 
+            // Navigate to login page.
+            this.Loaded += (sender, args) =>
+                this._navigationServiceEx.Navigate(new Uri("Views/LoginPage.xaml", UriKind.RelativeOrAbsolute));
+        }
 
-            Snackbar = MainSnackbar;
+        private void NavigationServiceEx_OnNavigated(object sender, NavigationEventArgs e)
+        {
         }
     }
 }

@@ -15,16 +15,16 @@ namespace AMD.Domain
     {
         public MainWindowViewModel(ISnackbarMessageQueue snackbarMessageQueue)
         {
-            _allItems = GenerateDemoItems(snackbarMessageQueue);
-            FilterItems(null);
+            //_allItems = GenerateDemoItems(snackbarMessageQueue);
+            //FilterItems(null);
 
-            MovePrevCommand = new AnotherCommandImplementation(
-                _ => SelectedIndex--,
-                _ => SelectedIndex > 0);
+            //MovePrevCommand = new AnotherCommandImplementation(
+            //    _ => SelectedIndex--,
+            //    _ => SelectedIndex > 0);
 
-            MoveNextCommand = new AnotherCommandImplementation(
-               _ => SelectedIndex++,
-               _ => SelectedIndex < _allItems.Count - 1);
+            //MoveNextCommand = new AnotherCommandImplementation(
+            //   _ => SelectedIndex++,
+            //   _ => SelectedIndex < _allItems.Count - 1);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -43,7 +43,7 @@ namespace AMD.Domain
             {
                 _searchKeyword = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DemoItems)));
-                FilterItems(_searchKeyword);
+                //FilterItems(_searchKeyword);
             }
         }
 
@@ -82,20 +82,20 @@ namespace AMD.Domain
         public AnotherCommandImplementation MovePrevCommand { get; }
         public AnotherCommandImplementation MoveNextCommand { get; }
 
-        private ObservableCollection<DemoItem> GenerateDemoItems(ISnackbarMessageQueue snackbarMessageQueue)
-        {
-            if (snackbarMessageQueue == null)
-                throw new ArgumentNullException(nameof(snackbarMessageQueue));
+        //private ObservableCollection<DemoItem> GenerateDemoItems(ISnackbarMessageQueue snackbarMessageQueue)
+        //{
+        //    if (snackbarMessageQueue == null)
+        //        throw new ArgumentNullException(nameof(snackbarMessageQueue));
 
-            return new ObservableCollection<DemoItem>
-            {
-                new DemoItem("Login", new Home(),
-                    new []
-                    {
-                        new DocumentationLink(DocumentationLinkType.Wiki, $"{ConfigurationManager.AppSettings["GitHub"]}/wiki", "WIKI"),
-                        DocumentationLink.DemoPageLink<Home>()
-                    }
-                ),
+            //return new ObservableCollection<DemoItem>
+            //{
+            //    new DemoItem("Login", new Home(),
+            //        new []
+            //        {
+            //            new DocumentationLink(DocumentationLinkType.Wiki, $"{ConfigurationManager.AppSettings["GitHub"]}/wiki", "WIKI"),
+            //            DocumentationLink.DemoPageLink<Home>()
+            //        }
+            //    ),
                 //new DemoItem("Palette", new PaletteSelector { DataContext = new PaletteSelectorViewModel() },
                 //    new []
                 //    {
@@ -301,17 +301,17 @@ namespace AMD.Domain
                 //    {
                 //        DocumentationLink.DemoPageLink<Shadows>(),
                 //    }),
-            };
-        }
+            //};
+        //}
 
-        private void FilterItems(string keyword)
-        {
-            var filteredItems =
-                string.IsNullOrWhiteSpace(keyword) ?
-                _allItems :
-                _allItems.Where(i => i.Name.ToLower().Contains(keyword.ToLower()));
+        //private void FilterItems(string keyword)
+        //{
+        //    var filteredItems =
+        //        string.IsNullOrWhiteSpace(keyword) ?
+        //        _allItems :
+        //        _allItems.Where(i => i.Name.ToLower().Contains(keyword.ToLower()));
 
-            DemoItems = new ObservableCollection<DemoItem>(filteredItems);
-        }
+        //    DemoItems = new ObservableCollection<DemoItem>(filteredItems);
+        //}
     }
 }

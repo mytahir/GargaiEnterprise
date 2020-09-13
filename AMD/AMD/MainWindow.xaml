@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:mdixWindow="clr-namespace:AMD"
         xmlns:mdix="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:AMD"
@@ -27,7 +28,7 @@
         <Grid>
             <!--<ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" HorizontalAlignment="Left" WindowChrome.IsHitTestVisibleInChrome="True" 
                           x:Name="MenuToggleButton" />-->
-            <TextBlock Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" HorizontalAlignment="Left" FontSize="20" Margin="10 0 0 0"/>
+            <TextBlock Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" HorizontalAlignment="Left" FontSize="20" Margin="30 0 0 0" VerticalAlignment="Center"/>
         </Grid>
 
     </mdixWindow:MaterialDesignWindow.HeaderContent>
@@ -37,40 +38,49 @@
                 <TextBlock Width="250" TextWrapping="Wrap" Text="Some left drawer content here. Perhaps navigation options?" 
                            VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
             </mdix:DrawerHost.LeftDrawerContent>-->
-        <Grid>
-            <!--<Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>-->
-            
-            <ScrollViewer
-                                  materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
-                                  HorizontalScrollBarVisibility="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.HorizontalScrollBarVisibilityRequirement}"
-                                  VerticalScrollBarVisibility="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.VerticalScrollBarVisibilityRequirement}" 
-                                  Padding="{Binding ElementName=DemoItemsListBox, Path=SelectedItem.MarginRequirement}">
-                <Grid>
-                    <ListBox 
-                        x:Name="DemoItemsListBox" 
-                        Margin="0 16 0 16" FlowDirection="LeftToRight"
-                        SelectedIndex="{Binding SelectedIndex}"
-                        SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}"
-                        ItemsSource="{Binding DemoItems}"
-                        AutomationProperties.Name="DemoPagesListBox" IsEnabled="False">
-                        <ListBox.Resources>
-                            <Style TargetType="ScrollBar" BasedOn="{StaticResource MaterialDesignScrollBarMinimal}"/>
-                        </ListBox.Resources>
-                        <ListBox.ItemTemplate>
-                            <DataTemplate DataType="domain:DemoItem">
-                                <TextBlock Text="{Binding Name}" Margin="32 0 32 0" AutomationProperties.AutomationId="DemoItemPage" />
+        <Grid x:Name="RootGrid">
+            <Grid.Resources>
+                <Style BasedOn="{StaticResource {x:Type Frame}}" TargetType="{x:Type Frame}">
+                    <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Accent4}" />
+                    <Setter Property="ClipToBounds" Value="True" />
+                    <Setter Property="ContentTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <mah:TransitioningContentControl Content="{Binding}"
+                                                             RestartTransitionOnContentChange="True"
+                                                             Transition="Custom">
+                                    <mah:TransitioningContentControl.CustomVisualStates>
+                                        <VisualState x:Name="CustomTransition">
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                                           Storyboard.TargetName="CurrentContentPresentationSite"
+                                                                           Storyboard.TargetProperty="(UIElement.Opacity)">
+                                                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0" />
+                                                    <SplineDoubleKeyFrame KeyTime="00:00:00.150" Value="1" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                                           Storyboard.TargetName="CurrentContentPresentationSite"
+                                                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                                                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="200" />
+                                                    <SplineDoubleKeyFrame KeySpline="0.1, 0.9, 0.2, 1"
+                                                                      KeyTime="00:00:00.300"
+                                                                      Value="0" />
+                                                </DoubleAnimationUsingKeyFrames>
+
+                                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                                           Storyboard.TargetName="PreviousContentPresentationSite"
+                                                                           Storyboard.TargetProperty="(UIElement.Opacity)">
+                                                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </mah:TransitioningContentControl.CustomVisualStates>
+                                </mah:TransitioningContentControl>
                             </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-
-                    <ContentControl Content="{Binding SelectedItem.Content, UpdateSourceTrigger=PropertyChanged}" />
-
-                </Grid>
-            </ScrollViewer>
-
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
             <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}" x:Name="MainSnackbar"
                                             />
         </Grid>

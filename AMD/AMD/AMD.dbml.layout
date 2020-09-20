@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="AMD">
+  <DataContextMoniker Name="/AMDDataContext" />
+  <nestedChildShapes>
+    <classShape Id="0e431d10-f1dd-448a-9691-fd08a0774ec5" absoluteBounds="2.375, 1.125, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/AMDDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="31d4cba3-77db-4f75-b973-57a89251d358" absoluteBounds="2.39, 1.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bdf316bc-4b2e-4aad-9537-481b9f45cac3" absoluteBounds="6.125, 1, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/AMDDataContext/Item" />
+      <nestedChildShapes>
+        <elementListCompartment Id="153e6392-9b5b-48c0-8e17-3c5152f3268b" absoluteBounds="6.14, 1.46, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

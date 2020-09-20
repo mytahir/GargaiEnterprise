@@ -3,7 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:AMD.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:AMD.Views" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Items" Loaded="Page_Loaded">
@@ -60,19 +61,17 @@
                     </Button>
                 </StackPanel>
 
-                <materialDesign:PopupBox PopupMode="Click" HorizontalAlignment="Right" VerticalAlignment="Center">
-                    <materialDesign:PopupBox.PopupContent>
-                        <Menu>
-                            <Menu.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel />
-                                </ItemsPanelTemplate>
-                            </Menu.ItemsPanel>
-                            <MenuItem Header="Account" />
-                            <MenuItem Header="About" />
-                        </Menu>
-                    </materialDesign:PopupBox.PopupContent>
-                </materialDesign:PopupBox>
+                <StackPanel  Margin="20 0" Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="CheckCircle" x:Name="ac"
+                                VerticalAlignment="Center" Height="20" Width="20"/>
+                    <Button x:Name="btnAccounts"
+    Style="{StaticResource MaterialDesignRaisedButton}"
+    Width="150" Height="70" Click="btnAccounts_Click"
+    ToolTip="Accounts" Background="#F55C79">
+                        Accounts
+                    </Button>
+                </StackPanel>
+                
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
@@ -95,12 +94,12 @@
       Style="{StaticResource MaterialDesignTabRadioButton}"
       Margin="4" x:Name="NewItemsRB"
       IsChecked="False" Click="NewItemsRB_Click"
-      Content="New Items"/>
+      Content="New Item"/>
                         <RadioButton
       Style="{StaticResource MaterialDesignTabRadioButton}"
       Margin="4"
       IsChecked="False"
-      Content="Items Settings" />
+      Content="Item Settings" />
                     </StackPanel>
                 </materialDesign:ColorZone>
                 <Frame Grid.Row="1" x:Name="NewItems">

@@ -1,0 +1,68 @@
+﻿<Page x:Class="AMD.Views.NewAccountsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AMD.Views"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AccountsPage">
+
+    <Grid>
+        <StackPanel Margin="20 50 20 20">
+
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 30">
+                <TextBox x:Name="txtFullName"
+    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+    VerticalAlignment="Top" HorizontalAlignment="Left"
+    Width="200"  Margin="0 0 20 0"
+    AcceptsReturn="True"
+    TextWrapping="Wrap"
+    VerticalScrollBarVisibility="Auto"
+    materialDesign:HintAssist.Hint="Full Name"
+    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
+
+                <TextBox x:Name="txtUserName"
+    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+    VerticalAlignment="Top" HorizontalAlignment="Left"
+    Width="200"
+    AcceptsReturn="True"
+    TextWrapping="Wrap"
+    VerticalScrollBarVisibility="Auto"
+    materialDesign:HintAssist.Hint="Username"
+    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 30">
+                <TextBox x:Name="txtPassword"
+    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+    VerticalAlignment="Top" HorizontalAlignment="Left"
+    Width="200"  Margin="0 0 20 0"
+    AcceptsReturn="True"
+    TextWrapping="Wrap"
+    VerticalScrollBarVisibility="Auto"
+    materialDesign:HintAssist.Hint="Password"
+    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
+
+                <RadioButton x:Name="rdbUserRole"
+  Style="{StaticResource MaterialDesignDarkRadioButton}"
+  IsChecked="True"
+  Content="User" materialDesign:HintAssist.Hint="User"/>
+
+                <RadioButton x:Name="rdbAdminRole"
+  Style="{StaticResource MaterialDesignDarkRadioButton}"
+  IsChecked="False" Margin="30 0 0 0"
+  Content="Admin" materialDesign:HintAssist.Hint="Admin" />
+
+            </StackPanel>
+
+            <Button x:Name="SaveItem"
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+    Width="100" ToolTip="Log into your Account"
+    HorizontalAlignment="Left" Click="SaveItem_Click">
+                Save
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

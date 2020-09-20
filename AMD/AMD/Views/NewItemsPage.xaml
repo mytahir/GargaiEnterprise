@@ -10,26 +10,28 @@
       Title="NewItemsPage">
 
     <Grid>
-        <StackPanel Margin="20 50 20 20">
-            <StackPanel Orientation="Horizontal" Margin="0 0 0 30">
-                <TextBox
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <StackPanel Margin="20 50 20 20">
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 30">
+                    <TextBox x:Name="ItemName"
     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
     VerticalAlignment="Top" HorizontalAlignment="Left"
-    Width="200" Margin="0 0 20 0"
+    Width="420" Margin="0 0 20 0"
     AcceptsReturn="True"
     TextWrapping="Wrap"
     VerticalScrollBarVisibility="Auto"
     materialDesign:HintAssist.Hint="Item Name"
     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
 
-                <DatePicker
+                    <!--<DatePicker x:Name="DateItemArrived"
   Width="200"
   materialDesign:HintAssist.Hint="Date Arrived"
-  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-            </StackPanel>
+  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />-->
+               
+                </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="0 0 0 30">
-                <TextBox
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 30">
+                    <TextBox x:Name="BaleQuantity"
     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
     VerticalAlignment="Top" HorizontalAlignment="Left"
     Width="200"  Margin="0 0 20 0"
@@ -39,7 +41,7 @@
     materialDesign:HintAssist.Hint="Bale Quantity"
     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
 
-                <TextBox
+                    <TextBox x:Name="BaleActualPrice"
     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
     VerticalAlignment="Top" HorizontalAlignment="Left"
     Width="200"
@@ -48,10 +50,10 @@
     VerticalScrollBarVisibility="Auto"
     materialDesign:HintAssist.Hint="Actual Price"
     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
-            </StackPanel>
+                </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="0 0 0 30">
-                <TextBox
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 30">
+                    <TextBox x:Name="BaleShopPrice"
     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
     VerticalAlignment="Top" HorizontalAlignment="Left"
     Width="200"  Margin="0 0 20 0"
@@ -61,23 +63,37 @@
     materialDesign:HintAssist.Hint="Shop Price"
     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
 
-                <TextBox
+                    <TextBox x:Name="PiecesPerBale"
     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
     VerticalAlignment="Top" HorizontalAlignment="Left"
     Width="200"
     AcceptsReturn="True"
     TextWrapping="Wrap"
     VerticalScrollBarVisibility="Auto"
+    materialDesign:HintAssist.Hint="Pieces Per Bale"
+    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 30">
+                   
+                    <TextBox x:Name="ItemComment"
+    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+    VerticalAlignment="Top" HorizontalAlignment="Left"
+    Width="420"
+    AcceptsReturn="True"
+    TextWrapping="Wrap"
+    VerticalScrollBarVisibility="Auto"
     materialDesign:HintAssist.Hint="Comment"
     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
-            </StackPanel>
-
-            <Button x:Name="SaveItem"
+                </StackPanel>
+                <Button x:Name="SaveItem"
     Style="{StaticResource MaterialDesignRaisedDarkButton}"
-    Width="100" ToolTip="Log into your Account"
+    Width="100" ToolTip="Save Item" Click="SaveItem_Click"
     HorizontalAlignment="Left">
-                Save
-            </Button>
-        </StackPanel>
+                    Save
+                </Button>
+            </StackPanel>
+        </ScrollViewer>
+
     </Grid>
 </Page>

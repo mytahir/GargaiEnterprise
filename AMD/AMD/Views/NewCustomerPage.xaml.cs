@@ -16,13 +16,18 @@ using System.Windows.Shapes;
 namespace AMD.Views
 {
     /// <summary>
-    /// Interaction logic for NewItemsPage.xaml
+    /// Interaction logic for NewCustomerPage.xaml
     /// </summary>
-    public partial class ItemsPage : Page
+    public partial class NewCustomerPage : Page
     {
-        public ItemsPage()
+        public NewCustomerPage()
         {
             InitializeComponent();
+        }
+
+        private void SaveItem_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -31,7 +36,7 @@ namespace AMD.Views
             var query = from p in db.Items
                         select p;
 
-            dgvItems.ItemsSource = query;
+            dgvItems1.ItemsSource = query;
         }
     }
 }

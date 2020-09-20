@@ -17,41 +17,35 @@ using System.Windows.Shapes;
 namespace AMD.Views
 {
     /// <summary>
-    /// Interaction logic for Items.xaml
+    /// Interaction logic for Account.xaml
     /// </summary>
-    public partial class Items : Page
+    public partial class Account : Page
     {
         private readonly Navigation.NavigationServiceEx _navigationServiceEx;
-        public Items()
+
+        public Account()
         {
             InitializeComponent();
             this._navigationServiceEx = NavigationServiceEx.Instance;
             this._navigationServiceEx.Navigated += this.NavigationServiceEx_OnNavigated;
-            NewItems.Content = new ItemsPage();
-
         }
 
         private void NavigationServiceEx_OnNavigated(object sender, NavigationEventArgs e)
-        {
-        }
+        { }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private void btnAccounts_Click(object sender, RoutedEventArgs e)
         {
-            db.Visibility = Visibility.Hidden;
-            it.Visibility = Visibility.Visible;
-            cm.Visibility = Visibility.Hidden;
-            rc.Visibility = Visibility.Hidden;
-            ac.Visibility = Visibility.Hidden;
-        }
-
-        private void btnItems_Click(object sender, RoutedEventArgs e)
-        {
-            this._navigationServiceEx.Navigate(new Uri("Views/Items.xaml", UriKind.RelativeOrAbsolute));
+            this._navigationServiceEx.Navigate(new Uri("Views/Account.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void btnDashboard_Click(object sender, RoutedEventArgs e)
         {
             this._navigationServiceEx.Navigate(new Uri("Views/Dashboard.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void btnItems_Click(object sender, RoutedEventArgs e)
+        {
+            this._navigationServiceEx.Navigate(new Uri("Views/Items.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void btnCustomers_Click(object sender, RoutedEventArgs e)
@@ -64,24 +58,40 @@ namespace AMD.Views
             this._navigationServiceEx.Navigate(new Uri("Views/Records.xaml", UriKind.RelativeOrAbsolute));
         }
 
-        private void RadioButton_Click(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            db.Visibility = Visibility.Hidden;
+            it.Visibility = Visibility.Hidden;
+            cm.Visibility = Visibility.Hidden;
+            rc.Visibility = Visibility.Hidden;
+            ac.Visibility = Visibility.Visible;
 
+            AccountsRB.IsChecked = true;
+
+            AccountsRB_Click(this, new RoutedEventArgs());
         }
 
-        private void NewItemsRB_Click(object sender, RoutedEventArgs e)
+        private void AccountsRB_Click(object sender, RoutedEventArgs e)
         {
-            NewItems.Content = new NewItemsPage();
+            ItemsFrame.Content = new AccountsPage();
+
+            //var db = new AMDDataContext();
+
+            //var query = from p in db.Users
+            //            select p;
+            //AccountsPage accountsPage = new AccountsPage();
+            //accountsPage.dgvAccounts.ItemsSource = query;
         }
 
-        private void ItemsRB_Click(object sender, RoutedEventArgs e)
+        private void NewAccountsRB_Click(object sender, RoutedEventArgs e)
         {
-            NewItems.Content = new ItemsPage();
+            ItemsFrame.Content = new NewAccountsPage();
         }
 
-        private void btnAccounts_Click(object sender, RoutedEventArgs e)
+        private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            this._navigationServiceEx.Navigate(new Uri("Views/Account.xaml", UriKind.RelativeOrAbsolute));
+            this._navigationServiceEx.Navigate(new Uri("Views/LoginPage.xaml", UriKind.RelativeOrAbsolute));
+
         }
     }
 }

@@ -60,19 +60,16 @@
                     </Button>
                 </StackPanel>
 
-                <materialDesign:PopupBox PopupMode="Click" HorizontalAlignment="Right" VerticalAlignment="Center">
-                    <materialDesign:PopupBox.PopupContent>
-                        <Menu>
-                            <Menu.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel />
-                                </ItemsPanelTemplate>
-                            </Menu.ItemsPanel>
-                            <MenuItem Header="Account" />
-                            <MenuItem Header="About" />
-                        </Menu>
-                    </materialDesign:PopupBox.PopupContent>
-                </materialDesign:PopupBox>
+                <StackPanel  Margin="20 0" Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="CheckCircle" x:Name="ac"
+                                VerticalAlignment="Center" Height="20" Width="20"/>
+                    <Button x:Name="btnAccounts"
+    Style="{StaticResource MaterialDesignRaisedButton}"
+    Width="150" Height="70" Click="btnAccounts_Click"
+    ToolTip="Accounts" Background="#F55C79">
+                        Accounts
+                    </Button>
+                </StackPanel>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">

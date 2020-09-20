@@ -16,22 +16,13 @@ using System.Windows.Shapes;
 namespace AMD.Views
 {
     /// <summary>
-    /// Interaction logic for NewItemsPage.xaml
+    /// Interaction logic for CustomerSettings.xaml
     /// </summary>
-    public partial class ItemsPage : Page
+    public partial class CustomerSettings : Page
     {
-        public ItemsPage()
+        public CustomerSettings()
         {
             InitializeComponent();
-        }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            var db = new AMDDataContext();
-            var query = from p in db.Items
-                        select p;
-
-            dgvItems.ItemsSource = query;
         }
     }
 }

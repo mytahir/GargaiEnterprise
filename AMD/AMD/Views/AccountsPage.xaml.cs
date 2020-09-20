@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,22 +17,25 @@ using System.Windows.Shapes;
 namespace AMD.Views
 {
     /// <summary>
-    /// Interaction logic for NewItemsPage.xaml
+    /// Interaction logic for AccountsPage.xaml
     /// </summary>
-    public partial class ItemsPage : Page
+    public partial class AccountsPage : Page
     {
-        public ItemsPage()
+        public AccountsPage()
         {
             InitializeComponent();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+
             var db = new AMDDataContext();
-            var query = from p in db.Items
+            var query = from p in db.Users
                         select p;
 
-            dgvItems.ItemsSource = query;
+            dgvAccounts.ItemsSource = query;
+
+
         }
     }
 }

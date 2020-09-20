@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="AMDdb" Class="AMDDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\AMDdb.mdf;Integrated Security=True" SettingsObjectName="AMD.Properties.Settings" SettingsPropertyName="AMDdbConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Role" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Items" Member="Items">
+    <Type Name="Item">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DateArrived" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BaleQuantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BaleActualPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BaleShopPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PiecesPerBale" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PiecesActualPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PiecesShopPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ItemComment" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TotalPieces" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BaleActualPriceTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BaleShopPriceTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PiecesPerBaleTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PiecesActualPriceTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PiecesShopPriceTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

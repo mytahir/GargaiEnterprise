@@ -28,7 +28,7 @@ namespace AMD.Views
 
         private void NameTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Enter)
+            if (e.Key == Key.Enter)
             {
                 Password.Focus();
             }
@@ -44,18 +44,47 @@ namespace AMD.Views
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            if((UserName.Text == "mustapha") && (Password.Password == "yusuf"))
+            var db = new AMDDataContext();
+
+            var CheckUsers = from p in db.Users
+                             where p.Username == UserName.Text && p.Password == Password.Password
+                             select p;
+
+            if (CheckUsers.Count() == 0)
             {
-            var navigation = NavigationServiceEx.Instance;
-            navigation.Navigate(typeof(MainPage));
-            // or
-            //navigation.Navigate(new Uri("Views/MainPage.xaml", UriKind.RelativeOrAbsolute));
+                MessageBox.Show("This User does not exist!, Please try again");
+
             }
+            //if ((UserName.Text == "mustapha") && (Password.Password == "yusuf"))
+            //{
+            //    var navigation = NavigationServiceEx.Instance;
+            //    navigation.Navigate(typeof(MainPage));
+            //    // or
+            //    //navigation.Navigate(new Uri("Views/MainPage.xaml", UriKind.RelativeOrAbsolute));
+            //}
             else
             {
-                MessageBox.Show("Invalid Username or Password!, Please try again");
+                var navigation = NavigationServiceEx.Instance;
+                //navigation.Navigate(typeof(MainPage));
+
+                foreach (var user in CheckUsers)
+                {
+                    switch (user.Role)
+                    {
+                        case "Admin":
+                            navigation.Navigate(typeof(MainPage));
+                            break;
+
+                        case "User":
+                            navigation.Navigate(typeof(UserPage));
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
             }
-            
+
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

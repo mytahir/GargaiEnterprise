@@ -4,7 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AMD.Views"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+      xmlns:Viewer="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="NewCustomerPage" Loaded="Page_Loaded">
@@ -16,9 +17,9 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-            <StackPanel Orientation="Horizontal"
+        <StackPanel Orientation="Horizontal"
                         Grid.Row="0" Margin="20 20 0 20">
-                <TextBox x:Name="txtFullName"
+            <TextBox x:Name="txtFullName"
     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
     VerticalAlignment="Top" HorizontalAlignment="Left"
     Width="300"  Margin="0 0 20 0"
@@ -27,20 +28,95 @@
     VerticalScrollBarVisibility="Auto"
     materialDesign:HintAssist.Hint="Customer Name"
     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
-            </StackPanel>
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid Margin="15 0 0 20" Grid.Column="0">
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <StackPanel Margin="20 0 0 0">
+
+                    <ComboBox Margin="0 0 0 10"
+                    Style="{StaticResource MaterialDesignFilledComboBox}"
+                    x:Name="ItemsToPrint"
+                    materialDesign:HintAssist.Hint="Select Items"
+                    Width="300" />
+
+                    <TextBox x:Name="txtPiecesShopPrice"
+    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+    VerticalAlignment="Top" Margin="0 0 0 10"
+    Width="300" Text="{Binding SelectedItem.PiecesShopPrice, ElementName=ItemsToPrint}"
+    AcceptsReturn="True"
+    TextWrapping="Wrap"
+    VerticalScrollBarVisibility="Auto"
+    materialDesign:HintAssist.Hint="Shop Price"
+    IsEnabled="False"/>
+
+
+                    <TextBox x:Name="txtItemsQuantity"
+    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+    VerticalAlignment="Top" Margin="0 0 0 10"
+    Width="300"
+    AcceptsReturn="True"
+    TextWrapping="Wrap"
+    VerticalScrollBarVisibility="Auto"
+    materialDesign:HintAssist.Hint="Initial Balance"
+    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
+
+                    <TextBox x:Name="txtCreditBalance"
+    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+    VerticalAlignment="Top"  Margin="0 0 0 10"
+    Width="300"
+    AcceptsReturn="True"
+    TextWrapping="Wrap"
+    VerticalScrollBarVisibility="Auto"
+    materialDesign:HintAssist.Hint="Credit Balance"
+    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
+
+                    <TextBox x:Name="txtCustomerComment"
+    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+    VerticalAlignment="Top"
+    Width="300"
+    AcceptsReturn="True"
+    TextWrapping="Wrap"
+    VerticalScrollBarVisibility="Auto"
+    materialDesign:HintAssist.Hint="Customer Comment"
+    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
+
+                </StackPanel>
+
+            </Grid>
+            <Grid Grid.Column="1">
+
+                <DataGrid x:Name="dgvItems" AutoGenerateColumns="False" 
+                          VerticalScrollBarVisibility="Auto" Margin="20 0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Path=FullName}" Header="Full Name" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding Path=Username}" Header="Username"  IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding Path=Password}" Header="Password"  IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding Path=Role}" Header="Role"  IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <!--<WindowsFormsHost Width="450">
+                    <Viewer:ReportViewer x:Name="_reportViewer">
+
+                    </Viewer:ReportViewer>
+                </WindowsFormsHost>-->
+
+            </Grid>
+            <!--<Grid Margin="15 0 0 20" Grid.Column="0">
                     <TextBlock Style="{StaticResource MaterialDesignHeadline5TextBlock}" Text="Items Available"/>
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                             <DataGrid x:Name="dgvItems1" CanUserAddRows="False" AutoGenerateColumns="False"
                           HeadersVisibility="All">
-                                <!--<DataGrid.Resources>
+                                -->
+            <!--<DataGrid.Resources>
                         <domain:BindingProxy x:Key="DataContextProxy" Data="{Binding}" />
                     </DataGrid.Resources>-->
+            <!--
                                 <DataGrid.Columns>
                                     <DataGridCheckBoxColumn Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}">
                                         <DataGridCheckBoxColumn.Header>
@@ -55,11 +131,14 @@
                                         </DataGridCheckBoxColumn.HeaderStyle>
                                     </DataGridCheckBoxColumn>
                                     <DataGridTextColumn Binding="{Binding Path=ItemName}" Header="Items" IsReadOnly="True"/>
-                                    <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
+                                    -->
+            <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
+            <!--
                                     <DataGridTextColumn Header="Shop Price" Binding="{Binding Path=PiecesShopPrice}" IsReadOnly="True"/>
 
-                            <!-- set a max length to get an indicator in the editor -->
-                                    <!--<DataGridTextColumn Header="No. Of Items"
+                            -->
+            <!-- set a max length to get an indicator in the editor -->
+            <!--<DataGridTextColumn Header="No. Of Items"
                                             ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" />
 
                                 <DataGridTextColumn Header="Amount Paid"
@@ -69,22 +148,26 @@
                                             ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" />
 
                                 <DataGridTextColumn Binding="{Binding Path=BaleShopPriceTotal}" Header="Total Bale Shop Price"  IsReadOnly="True"/>-->
+            <!--
 
                                 </DataGrid.Columns>
                             </DataGrid>
                     </ScrollViewer>
-                </Grid>
+                </Grid>-->
 
-                <Grid Margin="15 0 0 20"  Grid.Column="1">
+            <!--<Grid Margin="15 0 0 20"  Grid.Column="1">
                     <TextBlock Style="{StaticResource MaterialDesignHeadline5TextBlock}" Text="Items Paid"/>
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                         <DataGrid x:Name="dgvItems2" CanUserAddRows="False" AutoGenerateColumns="False"
                           HeadersVisibility="All">
-                            <!--<DataGrid.Resources>
+                            -->
+            <!--<DataGrid.Resources>
                         <domain:BindingProxy x:Key="DataContextProxy" Data="{Binding}" />
                     </DataGrid.Resources>-->
+            <!--
                             <DataGrid.Columns>
-                                <!--<DataGridCheckBoxColumn Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}">
+                                -->
+            <!--<DataGridCheckBoxColumn Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}">
                                     <DataGridCheckBoxColumn.Header>
                                         <Border Background="Transparent">
                                             <CheckBox IsChecked="False" />
@@ -96,12 +179,17 @@
                                         </Style>
                                     </DataGridCheckBoxColumn.HeaderStyle>
                                 </DataGridCheckBoxColumn>-->
+            <!--
                                 <DataGridTextColumn Binding="{Binding Path=ItemName}"
                                             Header="Items"/>
-                                <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
+                                -->
+            <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
+            <!--
                                 <DataGridTextColumn Header="Shop Price" Binding="{Binding Path=PiecesShopPrice}" IsReadOnly="True"/>
                                                                                                                  
-                                <!-- set a max length to get an indicator in the editor -->                      
+                                -->
+            <!-- set a max length to get an indicator in the editor -->
+            <!--                      
                                 <DataGridTextColumn Header="No. Of Items"                                        
                                             ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" IsReadOnly="True"/>
                                                                                                                  
@@ -114,14 +202,14 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </ScrollViewer>
-                </Grid>
-            </Grid>
+                </Grid>-->
+        </Grid>
 
-            <Button x:Name="SaveItem" Grid.Row="3"
+        <Button x:Name="SaveItems" Grid.Row="3"
     Style="{StaticResource MaterialDesignRaisedDarkButton}"
-    Width="100" ToolTip="Save Item" Margin="20 20 0 20"
-    HorizontalAlignment="Left" Click="SaveItem_Click">
-                Save
-            </Button>
+    Width="100" ToolTip="Save Items" Margin="20 20 0 20"
+    HorizontalAlignment="Left" Click="SaveItems_Click">
+            Save
+        </Button>
     </Grid>
 </Page>

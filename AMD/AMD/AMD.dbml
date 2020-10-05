@@ -29,4 +29,24 @@
       <Column Name="PiecesShopPriceTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Customer" Member="Customers">
+    <Type Name="Customer">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CustomerID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DateBought" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemsSold" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PaymentType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Cash" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Transfer" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Bank" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SubTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ReducedPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

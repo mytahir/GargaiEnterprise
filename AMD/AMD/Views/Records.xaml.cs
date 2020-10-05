@@ -38,7 +38,7 @@ namespace AMD.Views
             db.Visibility = Visibility.Hidden;
             it.Visibility = Visibility.Hidden;
             cm.Visibility = Visibility.Hidden;
-            rc.Visibility = Visibility.Visible;
+            //rc.Visibility = Visibility.Visible;
             ac.Visibility = Visibility.Hidden;
         }
 
@@ -57,10 +57,10 @@ namespace AMD.Views
             this._navigationServiceEx.Navigate(new Uri("Views/Customers.xaml", UriKind.RelativeOrAbsolute));
         }
 
-        private void btnRecords_Click(object sender, RoutedEventArgs e)
-        {
-            this._navigationServiceEx.Navigate(new Uri("Views/Records.xaml", UriKind.RelativeOrAbsolute));
-        }
+        //private void btnRecords_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this._navigationServiceEx.Navigate(new Uri("Views/Records.xaml", UriKind.RelativeOrAbsolute));
+        //}
 
         private void btnAccounts_Click(object sender, RoutedEventArgs e)
         {

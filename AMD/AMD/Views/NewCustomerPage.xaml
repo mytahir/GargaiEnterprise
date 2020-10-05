@@ -5,118 +5,242 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AMD.Views"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-      xmlns:Viewer="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+      xmlns:Viewer="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms" 
+      xmlns:iconPacks="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Modern"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="1200"
       Title="NewCustomerPage" Loaded="Page_Loaded">
+    
+    <Grid x:Name="MainPage" UIElement.PreviewMouseLeftButtonDown="MainPage_PreviewMouseLeftButtonDown">
+        <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal"
+                    Grid.Row="0" Margin="20 20 0 20"
+                    >
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <StackPanel Orientation="Horizontal"
-                        Grid.Row="0" Margin="20 20 0 20">
-            <TextBox x:Name="txtFullName"
+                    <TextBox x:Name="txtCustomerFullName"
     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
     VerticalAlignment="Top" HorizontalAlignment="Left"
-    Width="300"  Margin="0 0 20 0"
-    AcceptsReturn="True"
-    TextWrapping="Wrap"
+    Width="300"  Margin="0 0 40 0"
+    AcceptsReturn="False"
+    TextWrapping="Wrap" LostFocus="txtFullName_LostFocus"
     VerticalScrollBarVisibility="Auto"
     materialDesign:HintAssist.Hint="Customer Name"
     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
-        </StackPanel>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0">
-                <StackPanel Margin="20 0 0 0">
+                    <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}"
+                        Width="100" TextWrapping="Wrap" Text="Customer ID:" />
 
-                    <ComboBox Margin="0 0 0 10"
+                    <TextBlock x:Name="txtCustomerID" Width="150"
+                       Style="{StaticResource MaterialDesignBody1TextBlock}"
+                       TextWrapping="Wrap"/>
+
+                    <TextBox x:Name="txtCustomerDetailsName"
+    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+    VerticalAlignment="Top" HorizontalAlignment="Right"
+    Width="210"  Margin="95 0 40 0"
+    AcceptsReturn="False" IsReadOnly="True"
+    TextWrapping="Wrap"
+    VerticalScrollBarVisibility="Auto"
+    materialDesign:HintAssist.Hint="Reciept Name"
+    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
+
+
+                </StackPanel>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <StackPanel Margin="20 0 20 20" Orientation="Horizontal">
+                            <GroupBox>
+                                <GroupBox.Header>
+                                    Items Details
+                                </GroupBox.Header>
+                                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                                    <StackPanel Margin="0 0 20 0">
+                                        <StackPanel Orientation="Horizontal" Margin="0 0 0 10"
+                                    >
+                                            <ComboBox Margin="0 0 0 0"
                     Style="{StaticResource MaterialDesignFilledComboBox}"
-                    x:Name="ItemsToPrint"
-                    materialDesign:HintAssist.Hint="Select Items"
-                    Width="300" />
+                    x:Name="ItemsToPrint" SelectionChanged="ItemsToPrint_SelectionChanged"
+                    materialDesign:HintAssist.Hint="Select Items" 
+                    Width="150" />
+                                            <ComboBox Margin="10 0 0 0"
+                    Style="{StaticResource MaterialDesignFilledComboBox}"
+                    x:Name="ItemsNumber" SelectionChanged="ItemsNumber_SelectionChanged"
+                    materialDesign:HintAssist.Hint="Items No."
+                    Width="100" />
 
-                    <TextBox x:Name="txtPiecesShopPrice"
+                                        </StackPanel>
+                                        <TextBox x:Name="txtPiecesShopPrice"
     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
     VerticalAlignment="Top" Margin="0 0 0 10"
-    Width="300" Text="{Binding SelectedItem.PiecesShopPrice, ElementName=ItemsToPrint}"
-    AcceptsReturn="True"
+    Width="250" Text="{Binding SelectedItem.PiecesShopPrice, ElementName=ItemsToPrint}"
+    AcceptsReturn="False"
     TextWrapping="Wrap"
     VerticalScrollBarVisibility="Auto"
     materialDesign:HintAssist.Hint="Shop Price"
-    IsEnabled="False"/>
-
-
-                    <TextBox x:Name="txtItemsQuantity"
+    IsReadOnly="True"/>
+                                        <TextBox x:Name="txtPiecesReducedPrice"
     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
     VerticalAlignment="Top" Margin="0 0 0 10"
-    Width="300"
-    AcceptsReturn="True"
+    Width="250" MouseLeave="txtPiecesReducedPrice_MouseLeave"
+    AcceptsReturn="False"
     TextWrapping="Wrap"
     VerticalScrollBarVisibility="Auto"
-    materialDesign:HintAssist.Hint="Initial Balance"
+    materialDesign:HintAssist.Hint="Reduced Price"/>
+
+                                        <GroupBox Background="LightGray">
+                                            <GroupBox.Header>
+                                                Items Details
+                                            </GroupBox.Header>
+                                            <StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock  Text="Item(s):" FontSize="14" FontWeight="Bold"/>
+                                                    <TextBlock  x:Name="txtItem" FontSize="14" FontWeight="Bold" Margin="20 0 0 0"/>
+                                                    <TextBlock  x:Name="txtTimes" FontSize="14" Text="X" FontWeight="Bold" Margin="20 0 0 0" Visibility="Hidden"/>
+                                                    <TextBlock  x:Name="txtItemsno" FontSize="14" FontWeight="Bold" Margin="20 0 0 0"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock  Text="Reduced Price:" FontSize="14" FontWeight="Bold"/>
+                                                    <TextBlock  x:Name="txtReducedPrice" Text="0" FontSize="14" FontWeight="Bold" Margin="20 0 0 0" Visibility="Hidden"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock  Text="Sub Total:" FontSize="14" FontWeight="Bold"/>
+                                                    <TextBlock  x:Name="txtItemsSubTotal" FontSize="14" FontWeight="Bold" Margin="20 0 0 0"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock  Text="Total:" FontSize="14" FontWeight="Bold"/>
+                                                    <TextBlock  x:Name="txtItemsTotal" FontSize="14" FontWeight="Bold" Margin="20 0 0 0"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </GroupBox>
+
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </GroupBox>
+
+                            <GroupBox Margin="20 0 0 0">
+                                <GroupBox.Header>
+                                    Customer Details
+                                </GroupBox.Header>
+                                <ScrollViewer>
+                                    <StackPanel Margin="5 0 20 0">
+                                        <ComboBox Margin="0 0 0 10"
+    Style="{StaticResource MaterialDesignFilledComboBox}"
+    x:Name="PaymentType" SelectionChanged="PaymentType_SelectionChanged" 
+    materialDesign:HintAssist.Hint="Payment Type" 
+    Width="250" />
+
+
+                                        <TextBox x:Name="txtCash"
+    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+    VerticalAlignment="Top" Margin="0 0 0 10"
+    Width="250"
+    AcceptsReturn="False"
+    TextWrapping="Wrap"
+    VerticalScrollBarVisibility="Auto"
+    materialDesign:HintAssist.Hint="Cash"
     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
 
-                    <TextBox x:Name="txtCreditBalance"
+                                        <TextBox x:Name="txtTransfer"
     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
     VerticalAlignment="Top"  Margin="0 0 0 10"
-    Width="300"
-    AcceptsReturn="True"
+    Width="250"
+    AcceptsReturn="False" 
     TextWrapping="Wrap"
     VerticalScrollBarVisibility="Auto"
-    materialDesign:HintAssist.Hint="Credit Balance"
+    materialDesign:HintAssist.Hint="Transfer"
     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
 
-                    <TextBox x:Name="txtCustomerComment"
+                                        <ComboBox Margin="0 0 0 10"
+    Style="{StaticResource MaterialDesignFilledComboBox}"
+    x:Name="Bank"
+    materialDesign:HintAssist.Hint="Bank" 
+    Width="250" />
+
+                                        <TextBox x:Name="txtCustomerComment"
     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
     VerticalAlignment="Top"
-    Width="300"
-    AcceptsReturn="True"
+    Width="250" Margin="0 0 0 15"
+    AcceptsReturn="False" Height="60"
     TextWrapping="Wrap"
     VerticalScrollBarVisibility="Auto"
     materialDesign:HintAssist.Hint="Customer Comment"
-    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
+    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"/>
 
-                </StackPanel>
+                                        <GroupBox Background="LightGray">
+                                            <GroupBox.Header>
+                                                Customer Details
+                                            </GroupBox.Header>
+                                            <StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock  Text="Payment Type:" FontSize="14" FontWeight="Bold"/>
+                                                    <TextBlock  x:Name="txtPaymenttype" FontSize="14" FontWeight="Bold" Margin="20 0 0 0"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock  Text="Bank:" FontSize="14" FontWeight="Bold"/>
+                                                    <TextBlock  x:Name="txtBank" FontSize="14" FontWeight="Bold" Margin="20 0 0 0"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock  Text="Sub Total:" FontSize="14" FontWeight="Bold"/>
+                                                    <TextBlock  x:Name="txtSubTotal" FontSize="14" FontWeight="Bold" Margin="20 0 0 0"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock  Text="Total:" FontSize="14" FontWeight="Bold"/>
+                                                    <TextBlock  x:Name="txtTotal" FontSize="14" FontWeight="Bold" Margin="20 0 0 0"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock  Text="Collector:" FontSize="14" FontWeight="Bold"/>
+                                                    <TextBlock  x:Name="txtCollector" FontSize="14" FontWeight="Bold" Margin="20 0 0 0"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </GroupBox>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </GroupBox>
+                        </StackPanel>
 
-            </Grid>
-            <Grid Grid.Column="1">
+                    </Grid>
+                    <Grid Grid.Column="1">
 
-                <DataGrid x:Name="dgvItems" AutoGenerateColumns="False" 
-                          VerticalScrollBarVisibility="Auto" Margin="20 0">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Path=FullName}" Header="Full Name" IsReadOnly="True"/>
-                        <DataGridTextColumn Binding="{Binding Path=Username}" Header="Username"  IsReadOnly="True"/>
-                        <DataGridTextColumn Binding="{Binding Path=Password}" Header="Password"  IsReadOnly="True"/>
-                        <DataGridTextColumn Binding="{Binding Path=Role}" Header="Role"  IsReadOnly="True"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                        <DataGrid x:Name="dgvItems" AutoGenerateColumns="False" 
+                          VerticalScrollBarVisibility="Auto" Margin="20 0" HorizontalScrollBarVisibility="Auto">
+                            <DataGrid.Columns>
+                                <!--<DataGridTextColumn Binding="{Binding Path=DateBought}" Header="Date bought" IsReadOnly="True"/>-->
+                                <DataGridTextColumn Binding="{Binding Path=ItemName}" Header="Item Name"  IsReadOnly="True"/>
+                                <DataGridTextColumn Binding="{Binding Path=Price}" Header="Price"  IsReadOnly="True"/>
+                                <DataGridTextColumn Binding="{Binding Path=Quantity}" Header="Quantity"  IsReadOnly="True"/>
+                                <DataGridTextColumn Binding="{Binding Path=Subtotal}" Header="Sub Total"  IsReadOnly="True"/>
+                                <DataGridTextColumn Binding="{Binding Path=Total}" Header="Total"  IsReadOnly="True"/>
+                                <DataGridTextColumn Binding="{Binding Path=ReducedPrice}" Header="Reduced Price"  IsReadOnly="True"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
 
-                <!--<WindowsFormsHost Width="450">
+                        <!--<WindowsFormsHost Width="450">
                     <Viewer:ReportViewer x:Name="_reportViewer">
 
                     </Viewer:ReportViewer>
                 </WindowsFormsHost>-->
 
-            </Grid>
-            <!--<Grid Margin="15 0 0 20" Grid.Column="0">
+                    </Grid>
+                    <!--<Grid Margin="15 0 0 20" Grid.Column="0">
                     <TextBlock Style="{StaticResource MaterialDesignHeadline5TextBlock}" Text="Items Available"/>
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                             <DataGrid x:Name="dgvItems1" CanUserAddRows="False" AutoGenerateColumns="False"
                           HeadersVisibility="All">
                                 -->
-            <!--<DataGrid.Resources>
+                    <!--<DataGrid.Resources>
                         <domain:BindingProxy x:Key="DataContextProxy" Data="{Binding}" />
                     </DataGrid.Resources>-->
-            <!--
+                    <!--
                                 <DataGrid.Columns>
                                     <DataGridCheckBoxColumn Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}">
                                         <DataGridCheckBoxColumn.Header>
@@ -132,13 +256,13 @@
                                     </DataGridCheckBoxColumn>
                                     <DataGridTextColumn Binding="{Binding Path=ItemName}" Header="Items" IsReadOnly="True"/>
                                     -->
-            <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
-            <!--
+                    <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
+                    <!--
                                     <DataGridTextColumn Header="Shop Price" Binding="{Binding Path=PiecesShopPrice}" IsReadOnly="True"/>
 
                             -->
-            <!-- set a max length to get an indicator in the editor -->
-            <!--<DataGridTextColumn Header="No. Of Items"
+                    <!-- set a max length to get an indicator in the editor -->
+                    <!--<DataGridTextColumn Header="No. Of Items"
                                             ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" />
 
                                 <DataGridTextColumn Header="Amount Paid"
@@ -148,26 +272,26 @@
                                             ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" />
 
                                 <DataGridTextColumn Binding="{Binding Path=BaleShopPriceTotal}" Header="Total Bale Shop Price"  IsReadOnly="True"/>-->
-            <!--
+                    <!--
 
                                 </DataGrid.Columns>
                             </DataGrid>
                     </ScrollViewer>
                 </Grid>-->
 
-            <!--<Grid Margin="15 0 0 20"  Grid.Column="1">
+                    <!--<Grid Margin="15 0 0 20"  Grid.Column="1">
                     <TextBlock Style="{StaticResource MaterialDesignHeadline5TextBlock}" Text="Items Paid"/>
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                         <DataGrid x:Name="dgvItems2" CanUserAddRows="False" AutoGenerateColumns="False"
                           HeadersVisibility="All">
                             -->
-            <!--<DataGrid.Resources>
+                    <!--<DataGrid.Resources>
                         <domain:BindingProxy x:Key="DataContextProxy" Data="{Binding}" />
                     </DataGrid.Resources>-->
-            <!--
+                    <!--
                             <DataGrid.Columns>
                                 -->
-            <!--<DataGridCheckBoxColumn Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}">
+                    <!--<DataGridCheckBoxColumn Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}">
                                     <DataGridCheckBoxColumn.Header>
                                         <Border Background="Transparent">
                                             <CheckBox IsChecked="False" />
@@ -179,17 +303,17 @@
                                         </Style>
                                     </DataGridCheckBoxColumn.HeaderStyle>
                                 </DataGridCheckBoxColumn>-->
-            <!--
+                    <!--
                                 <DataGridTextColumn Binding="{Binding Path=ItemName}"
                                             Header="Items"/>
                                 -->
-            <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
-            <!--
+                    <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
+                    <!--
                                 <DataGridTextColumn Header="Shop Price" Binding="{Binding Path=PiecesShopPrice}" IsReadOnly="True"/>
                                                                                                                  
                                 -->
-            <!-- set a max length to get an indicator in the editor -->
-            <!--                      
+                    <!-- set a max length to get an indicator in the editor -->
+                    <!--                      
                                 <DataGridTextColumn Header="No. Of Items"                                        
                                             ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}" IsReadOnly="True"/>
                                                                                                                  
@@ -203,13 +327,43 @@
                         </DataGrid>
                     </ScrollViewer>
                 </Grid>-->
-        </Grid>
+                </Grid>
+            <StackPanel Orientation="Horizontal" Grid.Row="3">
 
-        <Button x:Name="SaveItems" Grid.Row="3"
+                <Button x:Name="SaveItems" 
     Style="{StaticResource MaterialDesignRaisedDarkButton}"
     Width="100" ToolTip="Save Items" Margin="20 20 0 20"
     HorizontalAlignment="Left" Click="SaveItems_Click">
-            Save
-        </Button>
+                    Save
+                </Button>
+
+                <Button x:Name="PrintItems" Grid.Row="3"
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+    Width="100" ToolTip="Save Items" Margin="20 20 0 20"
+    HorizontalAlignment="Left" Click="PrintItems_Click">
+                    Reciept
+                </Button>
+            </StackPanel>
+        </Grid>
+        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromBottom, Duration=0:0:0.80}"  
+                            x:Name="ReportGrid" Visibility="Collapsed" HorizontalAlignment="Center" LayoutUpdated="ReportGrid_LayoutUpdated">
+
+            <materialDesign:Card
+                        materialDesign:ShadowAssist.ShadowDepth="Depth5" Margin="0 -100 0 50">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+                    <TextBlock Text="Reciept" Grid.Row="0" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="White" Padding="10"/>
+                    <WindowsFormsHost Width="400" Grid.Row="1">
+                        <Viewer:ReportViewer x:Name="_reportViewer">
+
+                        </Viewer:ReportViewer>
+                    </WindowsFormsHost>
+                </Grid>
+            </materialDesign:Card>
+            </materialDesign:TransitioningContent>
+            <!--<TextBlock Text="Reciept" Background="{DynamicResource MaterialDesignColumnHeader}" Foreground="White"/>-->
     </Grid>
 </Page>

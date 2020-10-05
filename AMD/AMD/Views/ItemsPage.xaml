@@ -13,7 +13,7 @@
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <DataGrid x:Name="dgvItems" AutoGenerateColumns="False" VerticalScrollBarVisibility="Auto">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Path=ItemName}" Header="Item Name" IsReadOnly="True" FontSize="20"/>
+                    <DataGridTextColumn Binding="{Binding Path=ItemName}" Header="Item Name" IsReadOnly="True"/>
                     <DataGridTextColumn Binding="{Binding Path=DateArrived}" Header="Date Arrived"  IsReadOnly="True"/>
                     <DataGridTextColumn Binding="{Binding Path=BaleQuantity}" Header="Bale Quantity"  IsReadOnly="True"/>
                     <DataGridTextColumn Binding="{Binding Path=BaleActualPrice}" Header="Bale Actual Price"  IsReadOnly="True"/>

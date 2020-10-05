@@ -24,7 +24,7 @@ namespace AMD {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class Gargai : global::System.Data.DataSet {
         
-        private ItemsDataTable tableItems;
+        private CustomerDataTable tableCustomer;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -54,8 +54,8 @@ namespace AMD {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Items"] != null)) {
-                    base.Tables.Add(new ItemsDataTable(ds.Tables["Items"]));
+                if ((ds.Tables["Customer"] != null)) {
+                    base.Tables.Add(new CustomerDataTable(ds.Tables["Customer"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace AMD {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ItemsDataTable Items {
+        public CustomerDataTable Customer {
             get {
-                return this.tableItems;
+                return this.tableCustomer;
             }
         }
         
@@ -152,8 +152,8 @@ namespace AMD {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Items"] != null)) {
-                    base.Tables.Add(new ItemsDataTable(ds.Tables["Items"]));
+                if ((ds.Tables["Customer"] != null)) {
+                    base.Tables.Add(new CustomerDataTable(ds.Tables["Customer"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace AMD {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableItems = ((ItemsDataTable)(base.Tables["Items"]));
+            this.tableCustomer = ((CustomerDataTable)(base.Tables["Customer"]));
             if ((initTable == true)) {
-                if ((this.tableItems != null)) {
-                    this.tableItems.InitVars();
+                if ((this.tableCustomer != null)) {
+                    this.tableCustomer.InitVars();
                 }
             }
         }
@@ -204,13 +204,13 @@ namespace AMD {
             this.Namespace = "http://tempuri.org/Gargai.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableItems = new ItemsDataTable();
-            base.Tables.Add(this.tableItems);
+            this.tableCustomer = new CustomerDataTable();
+            base.Tables.Add(this.tableCustomer);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeItems() {
+        private bool ShouldSerializeCustomer() {
             return false;
         }
         
@@ -270,51 +270,51 @@ namespace AMD {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void ItemsRowChangeEventHandler(object sender, ItemsRowChangeEvent e);
+        public delegate void CustomerRowChangeEventHandler(object sender, CustomerRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ItemsDataTable : global::System.Data.TypedTableBase<ItemsRow> {
+        public partial class CustomerDataTable : global::System.Data.TypedTableBase<CustomerRow> {
             
             private global::System.Data.DataColumn columnId;
             
+            private global::System.Data.DataColumn columnCustomerName;
+            
+            private global::System.Data.DataColumn columnCustomerID;
+            
+            private global::System.Data.DataColumn columnDateBought;
+            
             private global::System.Data.DataColumn columnItemName;
             
-            private global::System.Data.DataColumn columnDateArrived;
+            private global::System.Data.DataColumn columnPrice;
             
-            private global::System.Data.DataColumn columnBaleQuantity;
+            private global::System.Data.DataColumn columnQuantity;
             
-            private global::System.Data.DataColumn columnBaleActualPrice;
+            private global::System.Data.DataColumn columnItemsSold;
             
-            private global::System.Data.DataColumn columnBaleShopPrice;
+            private global::System.Data.DataColumn columnPaymentType;
             
-            private global::System.Data.DataColumn columnPiecesPerBale;
+            private global::System.Data.DataColumn columnCash;
             
-            private global::System.Data.DataColumn columnPiecesActualPrice;
+            private global::System.Data.DataColumn columnTransfer;
             
-            private global::System.Data.DataColumn columnPiecesShopPrice;
+            private global::System.Data.DataColumn columnBank;
             
-            private global::System.Data.DataColumn columnItemComment;
+            private global::System.Data.DataColumn columnSubTotal;
             
-            private global::System.Data.DataColumn columnTotalPieces;
+            private global::System.Data.DataColumn columnTotal;
             
-            private global::System.Data.DataColumn columnBaleActualPriceTotal;
+            private global::System.Data.DataColumn columnReducedPrice;
             
-            private global::System.Data.DataColumn columnBaleShopPriceTotal;
-            
-            private global::System.Data.DataColumn columnPiecesPerBaleTotal;
-            
-            private global::System.Data.DataColumn columnPiecesActualPriceTotal;
-            
-            private global::System.Data.DataColumn columnPiecesShopPriceTotal;
+            private global::System.Data.DataColumn columnComment;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ItemsDataTable() {
-                this.TableName = "Items";
+            public CustomerDataTable() {
+                this.TableName = "Customer";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -322,7 +322,7 @@ namespace AMD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal ItemsDataTable(global::System.Data.DataTable table) {
+            internal CustomerDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -339,7 +339,7 @@ namespace AMD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected ItemsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected CustomerDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -354,6 +354,30 @@ namespace AMD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CustomerNameColumn {
+                get {
+                    return this.columnCustomerName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CustomerIDColumn {
+                get {
+                    return this.columnCustomerID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DateBoughtColumn {
+                get {
+                    return this.columnDateBought;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn ItemNameColumn {
                 get {
                     return this.columnItemName;
@@ -362,113 +386,89 @@ namespace AMD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DateArrivedColumn {
+            public global::System.Data.DataColumn PriceColumn {
                 get {
-                    return this.columnDateArrived;
+                    return this.columnPrice;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn BaleQuantityColumn {
+            public global::System.Data.DataColumn QuantityColumn {
                 get {
-                    return this.columnBaleQuantity;
+                    return this.columnQuantity;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn BaleActualPriceColumn {
+            public global::System.Data.DataColumn ItemsSoldColumn {
                 get {
-                    return this.columnBaleActualPrice;
+                    return this.columnItemsSold;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn BaleShopPriceColumn {
+            public global::System.Data.DataColumn PaymentTypeColumn {
                 get {
-                    return this.columnBaleShopPrice;
+                    return this.columnPaymentType;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PiecesPerBaleColumn {
+            public global::System.Data.DataColumn CashColumn {
                 get {
-                    return this.columnPiecesPerBale;
+                    return this.columnCash;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PiecesActualPriceColumn {
+            public global::System.Data.DataColumn TransferColumn {
                 get {
-                    return this.columnPiecesActualPrice;
+                    return this.columnTransfer;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PiecesShopPriceColumn {
+            public global::System.Data.DataColumn BankColumn {
                 get {
-                    return this.columnPiecesShopPrice;
+                    return this.columnBank;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ItemCommentColumn {
+            public global::System.Data.DataColumn SubTotalColumn {
                 get {
-                    return this.columnItemComment;
+                    return this.columnSubTotal;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn TotalPiecesColumn {
+            public global::System.Data.DataColumn TotalColumn {
                 get {
-                    return this.columnTotalPieces;
+                    return this.columnTotal;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn BaleActualPriceTotalColumn {
+            public global::System.Data.DataColumn ReducedPriceColumn {
                 get {
-                    return this.columnBaleActualPriceTotal;
+                    return this.columnReducedPrice;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn BaleShopPriceTotalColumn {
+            public global::System.Data.DataColumn CommentColumn {
                 get {
-                    return this.columnBaleShopPriceTotal;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PiecesPerBaleTotalColumn {
-                get {
-                    return this.columnPiecesPerBaleTotal;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PiecesActualPriceTotalColumn {
-                get {
-                    return this.columnPiecesActualPriceTotal;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PiecesShopPriceTotalColumn {
-                get {
-                    return this.columnPiecesShopPriceTotal;
+                    return this.columnComment;
                 }
             }
             
@@ -483,67 +483,67 @@ namespace AMD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ItemsRow this[int index] {
+            public CustomerRow this[int index] {
                 get {
-                    return ((ItemsRow)(this.Rows[index]));
+                    return ((CustomerRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event ItemsRowChangeEventHandler ItemsRowChanging;
+            public event CustomerRowChangeEventHandler CustomerRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event ItemsRowChangeEventHandler ItemsRowChanged;
+            public event CustomerRowChangeEventHandler CustomerRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event ItemsRowChangeEventHandler ItemsRowDeleting;
+            public event CustomerRowChangeEventHandler CustomerRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event ItemsRowChangeEventHandler ItemsRowDeleted;
+            public event CustomerRowChangeEventHandler CustomerRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddItemsRow(ItemsRow row) {
+            public void AddCustomerRow(CustomerRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ItemsRow AddItemsRow(string ItemName, System.DateTime DateArrived, int BaleQuantity, double BaleActualPrice, double BaleShopPrice, int PiecesPerBale, double PiecesActualPrice, double PiecesShopPrice, string ItemComment, int TotalPieces, double BaleActualPriceTotal, double BaleShopPriceTotal, double PiecesPerBaleTotal, double PiecesActualPriceTotal, double PiecesShopPriceTotal) {
-                ItemsRow rowItemsRow = ((ItemsRow)(this.NewRow()));
+            public CustomerRow AddCustomerRow(string CustomerName, string CustomerID, System.DateTime DateBought, string ItemName, double Price, int Quantity, int ItemsSold, string PaymentType, string Cash, string Transfer, string Bank, double SubTotal, double Total, double ReducedPrice, string Comment) {
+                CustomerRow rowCustomerRow = ((CustomerRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
+                        CustomerName,
+                        CustomerID,
+                        DateBought,
                         ItemName,
-                        DateArrived,
-                        BaleQuantity,
-                        BaleActualPrice,
-                        BaleShopPrice,
-                        PiecesPerBale,
-                        PiecesActualPrice,
-                        PiecesShopPrice,
-                        ItemComment,
-                        TotalPieces,
-                        BaleActualPriceTotal,
-                        BaleShopPriceTotal,
-                        PiecesPerBaleTotal,
-                        PiecesActualPriceTotal,
-                        PiecesShopPriceTotal};
-                rowItemsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowItemsRow);
-                return rowItemsRow;
+                        Price,
+                        Quantity,
+                        ItemsSold,
+                        PaymentType,
+                        Cash,
+                        Transfer,
+                        Bank,
+                        SubTotal,
+                        Total,
+                        ReducedPrice,
+                        Comment};
+                rowCustomerRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCustomerRow);
+                return rowCustomerRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ItemsRow FindById(int Id) {
-                return ((ItemsRow)(this.Rows.Find(new object[] {
+            public CustomerRow FindById(int Id) {
+                return ((CustomerRow)(this.Rows.Find(new object[] {
                             Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                ItemsDataTable cln = ((ItemsDataTable)(base.Clone()));
+                CustomerDataTable cln = ((CustomerDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -551,28 +551,28 @@ namespace AMD {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new ItemsDataTable();
+                return new CustomerDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnId = base.Columns["Id"];
+                this.columnCustomerName = base.Columns["CustomerName"];
+                this.columnCustomerID = base.Columns["CustomerID"];
+                this.columnDateBought = base.Columns["DateBought"];
                 this.columnItemName = base.Columns["ItemName"];
-                this.columnDateArrived = base.Columns["DateArrived"];
-                this.columnBaleQuantity = base.Columns["BaleQuantity"];
-                this.columnBaleActualPrice = base.Columns["BaleActualPrice"];
-                this.columnBaleShopPrice = base.Columns["BaleShopPrice"];
-                this.columnPiecesPerBale = base.Columns["PiecesPerBale"];
-                this.columnPiecesActualPrice = base.Columns["PiecesActualPrice"];
-                this.columnPiecesShopPrice = base.Columns["PiecesShopPrice"];
-                this.columnItemComment = base.Columns["ItemComment"];
-                this.columnTotalPieces = base.Columns["TotalPieces"];
-                this.columnBaleActualPriceTotal = base.Columns["BaleActualPriceTotal"];
-                this.columnBaleShopPriceTotal = base.Columns["BaleShopPriceTotal"];
-                this.columnPiecesPerBaleTotal = base.Columns["PiecesPerBaleTotal"];
-                this.columnPiecesActualPriceTotal = base.Columns["PiecesActualPriceTotal"];
-                this.columnPiecesShopPriceTotal = base.Columns["PiecesShopPriceTotal"];
+                this.columnPrice = base.Columns["Price"];
+                this.columnQuantity = base.Columns["Quantity"];
+                this.columnItemsSold = base.Columns["ItemsSold"];
+                this.columnPaymentType = base.Columns["PaymentType"];
+                this.columnCash = base.Columns["Cash"];
+                this.columnTransfer = base.Columns["Transfer"];
+                this.columnBank = base.Columns["Bank"];
+                this.columnSubTotal = base.Columns["SubTotal"];
+                this.columnTotal = base.Columns["Total"];
+                this.columnReducedPrice = base.Columns["ReducedPrice"];
+                this.columnComment = base.Columns["Comment"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -580,36 +580,36 @@ namespace AMD {
             private void InitClass() {
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
+                this.columnCustomerName = new global::System.Data.DataColumn("CustomerName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCustomerName);
+                this.columnCustomerID = new global::System.Data.DataColumn("CustomerID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCustomerID);
+                this.columnDateBought = new global::System.Data.DataColumn("DateBought", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDateBought);
                 this.columnItemName = new global::System.Data.DataColumn("ItemName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnItemName);
-                this.columnDateArrived = new global::System.Data.DataColumn("DateArrived", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDateArrived);
-                this.columnBaleQuantity = new global::System.Data.DataColumn("BaleQuantity", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBaleQuantity);
-                this.columnBaleActualPrice = new global::System.Data.DataColumn("BaleActualPrice", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBaleActualPrice);
-                this.columnBaleShopPrice = new global::System.Data.DataColumn("BaleShopPrice", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBaleShopPrice);
-                this.columnPiecesPerBale = new global::System.Data.DataColumn("PiecesPerBale", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPiecesPerBale);
-                this.columnPiecesActualPrice = new global::System.Data.DataColumn("PiecesActualPrice", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPiecesActualPrice);
-                this.columnPiecesShopPrice = new global::System.Data.DataColumn("PiecesShopPrice", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPiecesShopPrice);
-                this.columnItemComment = new global::System.Data.DataColumn("ItemComment", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnItemComment);
-                this.columnTotalPieces = new global::System.Data.DataColumn("TotalPieces", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotalPieces);
-                this.columnBaleActualPriceTotal = new global::System.Data.DataColumn("BaleActualPriceTotal", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBaleActualPriceTotal);
-                this.columnBaleShopPriceTotal = new global::System.Data.DataColumn("BaleShopPriceTotal", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBaleShopPriceTotal);
-                this.columnPiecesPerBaleTotal = new global::System.Data.DataColumn("PiecesPerBaleTotal", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPiecesPerBaleTotal);
-                this.columnPiecesActualPriceTotal = new global::System.Data.DataColumn("PiecesActualPriceTotal", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPiecesActualPriceTotal);
-                this.columnPiecesShopPriceTotal = new global::System.Data.DataColumn("PiecesShopPriceTotal", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPiecesShopPriceTotal);
+                this.columnPrice = new global::System.Data.DataColumn("Price", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPrice);
+                this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQuantity);
+                this.columnItemsSold = new global::System.Data.DataColumn("ItemsSold", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnItemsSold);
+                this.columnPaymentType = new global::System.Data.DataColumn("PaymentType", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPaymentType);
+                this.columnCash = new global::System.Data.DataColumn("Cash", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCash);
+                this.columnTransfer = new global::System.Data.DataColumn("Transfer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTransfer);
+                this.columnBank = new global::System.Data.DataColumn("Bank", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBank);
+                this.columnSubTotal = new global::System.Data.DataColumn("SubTotal", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSubTotal);
+                this.columnTotal = new global::System.Data.DataColumn("Total", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotal);
+                this.columnReducedPrice = new global::System.Data.DataColumn("ReducedPrice", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReducedPrice);
+                this.columnComment = new global::System.Data.DataColumn("Comment", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnComment);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -618,34 +618,40 @@ namespace AMD {
                 this.columnId.AllowDBNull = false;
                 this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
+                this.columnCustomerName.MaxLength = 50;
+                this.columnCustomerID.MaxLength = 50;
                 this.columnItemName.MaxLength = 50;
-                this.columnItemComment.MaxLength = 100;
+                this.columnPaymentType.MaxLength = 50;
+                this.columnCash.MaxLength = 50;
+                this.columnTransfer.MaxLength = 50;
+                this.columnBank.MaxLength = 50;
+                this.columnComment.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ItemsRow NewItemsRow() {
-                return ((ItemsRow)(this.NewRow()));
+            public CustomerRow NewCustomerRow() {
+                return ((CustomerRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ItemsRow(builder);
+                return new CustomerRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(ItemsRow);
+                return typeof(CustomerRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.ItemsRowChanged != null)) {
-                    this.ItemsRowChanged(this, new ItemsRowChangeEvent(((ItemsRow)(e.Row)), e.Action));
+                if ((this.CustomerRowChanged != null)) {
+                    this.CustomerRowChanged(this, new CustomerRowChangeEvent(((CustomerRow)(e.Row)), e.Action));
                 }
             }
             
@@ -653,8 +659,8 @@ namespace AMD {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.ItemsRowChanging != null)) {
-                    this.ItemsRowChanging(this, new ItemsRowChangeEvent(((ItemsRow)(e.Row)), e.Action));
+                if ((this.CustomerRowChanging != null)) {
+                    this.CustomerRowChanging(this, new CustomerRowChangeEvent(((CustomerRow)(e.Row)), e.Action));
                 }
             }
             
@@ -662,8 +668,8 @@ namespace AMD {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.ItemsRowDeleted != null)) {
-                    this.ItemsRowDeleted(this, new ItemsRowChangeEvent(((ItemsRow)(e.Row)), e.Action));
+                if ((this.CustomerRowDeleted != null)) {
+                    this.CustomerRowDeleted(this, new CustomerRowChangeEvent(((CustomerRow)(e.Row)), e.Action));
                 }
             }
             
@@ -671,14 +677,14 @@ namespace AMD {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.ItemsRowDeleting != null)) {
-                    this.ItemsRowDeleting(this, new ItemsRowChangeEvent(((ItemsRow)(e.Row)), e.Action));
+                if ((this.CustomerRowDeleting != null)) {
+                    this.CustomerRowDeleting(this, new CustomerRowChangeEvent(((CustomerRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveItemsRow(ItemsRow row) {
+            public void RemoveCustomerRow(CustomerRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -705,7 +711,7 @@ namespace AMD {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ItemsDataTable";
+                attribute2.FixedValue = "CustomerDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -749,25 +755,73 @@ namespace AMD {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class ItemsRow : global::System.Data.DataRow {
+        public partial class CustomerRow : global::System.Data.DataRow {
             
-            private ItemsDataTable tableItems;
+            private CustomerDataTable tableCustomer;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal ItemsRow(global::System.Data.DataRowBuilder rb) : 
+            internal CustomerRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableItems = ((ItemsDataTable)(this.Table));
+                this.tableCustomer = ((CustomerDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int Id {
                 get {
-                    return ((int)(this[this.tableItems.IdColumn]));
+                    return ((int)(this[this.tableCustomer.IdColumn]));
                 }
                 set {
-                    this[this.tableItems.IdColumn] = value;
+                    this[this.tableCustomer.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string CustomerName {
+                get {
+                    try {
+                        return ((string)(this[this.tableCustomer.CustomerNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CustomerName\' in table \'Customer\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCustomer.CustomerNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string CustomerID {
+                get {
+                    try {
+                        return ((string)(this[this.tableCustomer.CustomerIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CustomerID\' in table \'Customer\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCustomer.CustomerIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime DateBought {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableCustomer.DateBoughtColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DateBought\' in table \'Customer\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCustomer.DateBoughtColumn] = value;
                 }
             }
             
@@ -776,419 +830,371 @@ namespace AMD {
             public string ItemName {
                 get {
                     try {
-                        return ((string)(this[this.tableItems.ItemNameColumn]));
+                        return ((string)(this[this.tableCustomer.ItemNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ItemName\' in table \'Items\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ItemName\' in table \'Customer\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableItems.ItemNameColumn] = value;
+                    this[this.tableCustomer.ItemNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime DateArrived {
+            public double Price {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableItems.DateArrivedColumn]));
+                        return ((double)(this[this.tableCustomer.PriceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DateArrived\' in table \'Items\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Price\' in table \'Customer\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableItems.DateArrivedColumn] = value;
+                    this[this.tableCustomer.PriceColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int BaleQuantity {
+            public int Quantity {
                 get {
                     try {
-                        return ((int)(this[this.tableItems.BaleQuantityColumn]));
+                        return ((int)(this[this.tableCustomer.QuantityColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'BaleQuantity\' in table \'Items\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Quantity\' in table \'Customer\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableItems.BaleQuantityColumn] = value;
+                    this[this.tableCustomer.QuantityColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double BaleActualPrice {
+            public int ItemsSold {
                 get {
                     try {
-                        return ((double)(this[this.tableItems.BaleActualPriceColumn]));
+                        return ((int)(this[this.tableCustomer.ItemsSoldColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'BaleActualPrice\' in table \'Items\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ItemsSold\' in table \'Customer\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableItems.BaleActualPriceColumn] = value;
+                    this[this.tableCustomer.ItemsSoldColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double BaleShopPrice {
+            public string PaymentType {
                 get {
                     try {
-                        return ((double)(this[this.tableItems.BaleShopPriceColumn]));
+                        return ((string)(this[this.tableCustomer.PaymentTypeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'BaleShopPrice\' in table \'Items\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PaymentType\' in table \'Customer\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableItems.BaleShopPriceColumn] = value;
+                    this[this.tableCustomer.PaymentTypeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int PiecesPerBale {
+            public string Cash {
                 get {
                     try {
-                        return ((int)(this[this.tableItems.PiecesPerBaleColumn]));
+                        return ((string)(this[this.tableCustomer.CashColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PiecesPerBale\' in table \'Items\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Cash\' in table \'Customer\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableItems.PiecesPerBaleColumn] = value;
+                    this[this.tableCustomer.CashColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double PiecesActualPrice {
+            public string Transfer {
                 get {
                     try {
-                        return ((double)(this[this.tableItems.PiecesActualPriceColumn]));
+                        return ((string)(this[this.tableCustomer.TransferColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PiecesActualPrice\' in table \'Items\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Transfer\' in table \'Customer\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableItems.PiecesActualPriceColumn] = value;
+                    this[this.tableCustomer.TransferColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double PiecesShopPrice {
+            public string Bank {
                 get {
                     try {
-                        return ((double)(this[this.tableItems.PiecesShopPriceColumn]));
+                        return ((string)(this[this.tableCustomer.BankColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PiecesShopPrice\' in table \'Items\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Bank\' in table \'Customer\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableItems.PiecesShopPriceColumn] = value;
+                    this[this.tableCustomer.BankColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string ItemComment {
+            public double SubTotal {
                 get {
                     try {
-                        return ((string)(this[this.tableItems.ItemCommentColumn]));
+                        return ((double)(this[this.tableCustomer.SubTotalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ItemComment\' in table \'Items\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'SubTotal\' in table \'Customer\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableItems.ItemCommentColumn] = value;
+                    this[this.tableCustomer.SubTotalColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int TotalPieces {
+            public double Total {
                 get {
                     try {
-                        return ((int)(this[this.tableItems.TotalPiecesColumn]));
+                        return ((double)(this[this.tableCustomer.TotalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TotalPieces\' in table \'Items\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Total\' in table \'Customer\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableItems.TotalPiecesColumn] = value;
+                    this[this.tableCustomer.TotalColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double BaleActualPriceTotal {
+            public double ReducedPrice {
                 get {
                     try {
-                        return ((double)(this[this.tableItems.BaleActualPriceTotalColumn]));
+                        return ((double)(this[this.tableCustomer.ReducedPriceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'BaleActualPriceTotal\' in table \'Items\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ReducedPrice\' in table \'Customer\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableItems.BaleActualPriceTotalColumn] = value;
+                    this[this.tableCustomer.ReducedPriceColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double BaleShopPriceTotal {
+            public string Comment {
                 get {
                     try {
-                        return ((double)(this[this.tableItems.BaleShopPriceTotalColumn]));
+                        return ((string)(this[this.tableCustomer.CommentColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'BaleShopPriceTotal\' in table \'Items\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Comment\' in table \'Customer\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableItems.BaleShopPriceTotalColumn] = value;
+                    this[this.tableCustomer.CommentColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double PiecesPerBaleTotal {
-                get {
-                    try {
-                        return ((double)(this[this.tableItems.PiecesPerBaleTotalColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PiecesPerBaleTotal\' in table \'Items\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableItems.PiecesPerBaleTotalColumn] = value;
-                }
+            public bool IsCustomerNameNull() {
+                return this.IsNull(this.tableCustomer.CustomerNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double PiecesActualPriceTotal {
-                get {
-                    try {
-                        return ((double)(this[this.tableItems.PiecesActualPriceTotalColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PiecesActualPriceTotal\' in table \'Items\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableItems.PiecesActualPriceTotalColumn] = value;
-                }
+            public void SetCustomerNameNull() {
+                this[this.tableCustomer.CustomerNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double PiecesShopPriceTotal {
-                get {
-                    try {
-                        return ((double)(this[this.tableItems.PiecesShopPriceTotalColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PiecesShopPriceTotal\' in table \'Items\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableItems.PiecesShopPriceTotalColumn] = value;
-                }
+            public bool IsCustomerIDNull() {
+                return this.IsNull(this.tableCustomer.CustomerIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCustomerIDNull() {
+                this[this.tableCustomer.CustomerIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDateBoughtNull() {
+                return this.IsNull(this.tableCustomer.DateBoughtColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDateBoughtNull() {
+                this[this.tableCustomer.DateBoughtColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsItemNameNull() {
-                return this.IsNull(this.tableItems.ItemNameColumn);
+                return this.IsNull(this.tableCustomer.ItemNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetItemNameNull() {
-                this[this.tableItems.ItemNameColumn] = global::System.Convert.DBNull;
+                this[this.tableCustomer.ItemNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsDateArrivedNull() {
-                return this.IsNull(this.tableItems.DateArrivedColumn);
+            public bool IsPriceNull() {
+                return this.IsNull(this.tableCustomer.PriceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetDateArrivedNull() {
-                this[this.tableItems.DateArrivedColumn] = global::System.Convert.DBNull;
+            public void SetPriceNull() {
+                this[this.tableCustomer.PriceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsBaleQuantityNull() {
-                return this.IsNull(this.tableItems.BaleQuantityColumn);
+            public bool IsQuantityNull() {
+                return this.IsNull(this.tableCustomer.QuantityColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetBaleQuantityNull() {
-                this[this.tableItems.BaleQuantityColumn] = global::System.Convert.DBNull;
+            public void SetQuantityNull() {
+                this[this.tableCustomer.QuantityColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsBaleActualPriceNull() {
-                return this.IsNull(this.tableItems.BaleActualPriceColumn);
+            public bool IsItemsSoldNull() {
+                return this.IsNull(this.tableCustomer.ItemsSoldColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetBaleActualPriceNull() {
-                this[this.tableItems.BaleActualPriceColumn] = global::System.Convert.DBNull;
+            public void SetItemsSoldNull() {
+                this[this.tableCustomer.ItemsSoldColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsBaleShopPriceNull() {
-                return this.IsNull(this.tableItems.BaleShopPriceColumn);
+            public bool IsPaymentTypeNull() {
+                return this.IsNull(this.tableCustomer.PaymentTypeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetBaleShopPriceNull() {
-                this[this.tableItems.BaleShopPriceColumn] = global::System.Convert.DBNull;
+            public void SetPaymentTypeNull() {
+                this[this.tableCustomer.PaymentTypeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPiecesPerBaleNull() {
-                return this.IsNull(this.tableItems.PiecesPerBaleColumn);
+            public bool IsCashNull() {
+                return this.IsNull(this.tableCustomer.CashColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPiecesPerBaleNull() {
-                this[this.tableItems.PiecesPerBaleColumn] = global::System.Convert.DBNull;
+            public void SetCashNull() {
+                this[this.tableCustomer.CashColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPiecesActualPriceNull() {
-                return this.IsNull(this.tableItems.PiecesActualPriceColumn);
+            public bool IsTransferNull() {
+                return this.IsNull(this.tableCustomer.TransferColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPiecesActualPriceNull() {
-                this[this.tableItems.PiecesActualPriceColumn] = global::System.Convert.DBNull;
+            public void SetTransferNull() {
+                this[this.tableCustomer.TransferColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPiecesShopPriceNull() {
-                return this.IsNull(this.tableItems.PiecesShopPriceColumn);
+            public bool IsBankNull() {
+                return this.IsNull(this.tableCustomer.BankColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPiecesShopPriceNull() {
-                this[this.tableItems.PiecesShopPriceColumn] = global::System.Convert.DBNull;
+            public void SetBankNull() {
+                this[this.tableCustomer.BankColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsItemCommentNull() {
-                return this.IsNull(this.tableItems.ItemCommentColumn);
+            public bool IsSubTotalNull() {
+                return this.IsNull(this.tableCustomer.SubTotalColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetItemCommentNull() {
-                this[this.tableItems.ItemCommentColumn] = global::System.Convert.DBNull;
+            public void SetSubTotalNull() {
+                this[this.tableCustomer.SubTotalColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsTotalPiecesNull() {
-                return this.IsNull(this.tableItems.TotalPiecesColumn);
+            public bool IsTotalNull() {
+                return this.IsNull(this.tableCustomer.TotalColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetTotalPiecesNull() {
-                this[this.tableItems.TotalPiecesColumn] = global::System.Convert.DBNull;
+            public void SetTotalNull() {
+                this[this.tableCustomer.TotalColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsBaleActualPriceTotalNull() {
-                return this.IsNull(this.tableItems.BaleActualPriceTotalColumn);
+            public bool IsReducedPriceNull() {
+                return this.IsNull(this.tableCustomer.ReducedPriceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetBaleActualPriceTotalNull() {
-                this[this.tableItems.BaleActualPriceTotalColumn] = global::System.Convert.DBNull;
+            public void SetReducedPriceNull() {
+                this[this.tableCustomer.ReducedPriceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsBaleShopPriceTotalNull() {
-                return this.IsNull(this.tableItems.BaleShopPriceTotalColumn);
+            public bool IsCommentNull() {
+                return this.IsNull(this.tableCustomer.CommentColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetBaleShopPriceTotalNull() {
-                this[this.tableItems.BaleShopPriceTotalColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPiecesPerBaleTotalNull() {
-                return this.IsNull(this.tableItems.PiecesPerBaleTotalColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPiecesPerBaleTotalNull() {
-                this[this.tableItems.PiecesPerBaleTotalColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPiecesActualPriceTotalNull() {
-                return this.IsNull(this.tableItems.PiecesActualPriceTotalColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPiecesActualPriceTotalNull() {
-                this[this.tableItems.PiecesActualPriceTotalColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPiecesShopPriceTotalNull() {
-                return this.IsNull(this.tableItems.PiecesShopPriceTotalColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPiecesShopPriceTotalNull() {
-                this[this.tableItems.PiecesShopPriceTotalColumn] = global::System.Convert.DBNull;
+            public void SetCommentNull() {
+                this[this.tableCustomer.CommentColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1196,22 +1202,22 @@ namespace AMD {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class ItemsRowChangeEvent : global::System.EventArgs {
+        public class CustomerRowChangeEvent : global::System.EventArgs {
             
-            private ItemsRow eventRow;
+            private CustomerRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ItemsRowChangeEvent(ItemsRow row, global::System.Data.DataRowAction action) {
+            public CustomerRowChangeEvent(CustomerRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ItemsRow Row {
+            public CustomerRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1239,7 +1245,7 @@ namespace AMD.GargaiTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ItemsTableAdapter : global::System.ComponentModel.Component {
+    public partial class CustomerTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -1253,7 +1259,7 @@ namespace AMD.GargaiTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public ItemsTableAdapter() {
+        public CustomerTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1350,184 +1356,153 @@ namespace AMD.GargaiTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Items";
+            tableMapping.DataSetTable = "Customer";
             tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("CustomerName", "CustomerName");
+            tableMapping.ColumnMappings.Add("CustomerID", "CustomerID");
+            tableMapping.ColumnMappings.Add("DateBought", "DateBought");
             tableMapping.ColumnMappings.Add("ItemName", "ItemName");
-            tableMapping.ColumnMappings.Add("DateArrived", "DateArrived");
-            tableMapping.ColumnMappings.Add("BaleQuantity", "BaleQuantity");
-            tableMapping.ColumnMappings.Add("BaleActualPrice", "BaleActualPrice");
-            tableMapping.ColumnMappings.Add("BaleShopPrice", "BaleShopPrice");
-            tableMapping.ColumnMappings.Add("PiecesPerBale", "PiecesPerBale");
-            tableMapping.ColumnMappings.Add("PiecesActualPrice", "PiecesActualPrice");
-            tableMapping.ColumnMappings.Add("PiecesShopPrice", "PiecesShopPrice");
-            tableMapping.ColumnMappings.Add("ItemComment", "ItemComment");
-            tableMapping.ColumnMappings.Add("TotalPieces", "TotalPieces");
-            tableMapping.ColumnMappings.Add("BaleActualPriceTotal", "BaleActualPriceTotal");
-            tableMapping.ColumnMappings.Add("BaleShopPriceTotal", "BaleShopPriceTotal");
-            tableMapping.ColumnMappings.Add("PiecesPerBaleTotal", "PiecesPerBaleTotal");
-            tableMapping.ColumnMappings.Add("PiecesActualPriceTotal", "PiecesActualPriceTotal");
-            tableMapping.ColumnMappings.Add("PiecesShopPriceTotal", "PiecesShopPriceTotal");
+            tableMapping.ColumnMappings.Add("Price", "Price");
+            tableMapping.ColumnMappings.Add("Quantity", "Quantity");
+            tableMapping.ColumnMappings.Add("ItemsSold", "ItemsSold");
+            tableMapping.ColumnMappings.Add("PaymentType", "PaymentType");
+            tableMapping.ColumnMappings.Add("Cash", "Cash");
+            tableMapping.ColumnMappings.Add("Transfer", "Transfer");
+            tableMapping.ColumnMappings.Add("Bank", "Bank");
+            tableMapping.ColumnMappings.Add("SubTotal", "SubTotal");
+            tableMapping.ColumnMappings.Add("Total", "Total");
+            tableMapping.ColumnMappings.Add("ReducedPrice", "ReducedPrice");
+            tableMapping.ColumnMappings.Add("Comment", "Comment");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Items] WHERE (([Id] = @Original_Id) AND ((@IsNull_ItemName = 1" +
-                " AND [ItemName] IS NULL) OR ([ItemName] = @Original_ItemName)) AND ((@IsNull_Dat" +
-                "eArrived = 1 AND [DateArrived] IS NULL) OR ([DateArrived] = @Original_DateArrive" +
-                "d)) AND ((@IsNull_BaleQuantity = 1 AND [BaleQuantity] IS NULL) OR ([BaleQuantity" +
-                "] = @Original_BaleQuantity)) AND ((@IsNull_BaleActualPrice = 1 AND [BaleActualPr" +
-                "ice] IS NULL) OR ([BaleActualPrice] = @Original_BaleActualPrice)) AND ((@IsNull_" +
-                "BaleShopPrice = 1 AND [BaleShopPrice] IS NULL) OR ([BaleShopPrice] = @Original_B" +
-                "aleShopPrice)) AND ((@IsNull_PiecesPerBale = 1 AND [PiecesPerBale] IS NULL) OR (" +
-                "[PiecesPerBale] = @Original_PiecesPerBale)) AND ((@IsNull_PiecesActualPrice = 1 " +
-                "AND [PiecesActualPrice] IS NULL) OR ([PiecesActualPrice] = @Original_PiecesActua" +
-                "lPrice)) AND ((@IsNull_PiecesShopPrice = 1 AND [PiecesShopPrice] IS NULL) OR ([P" +
-                "iecesShopPrice] = @Original_PiecesShopPrice)) AND ((@IsNull_ItemComment = 1 AND " +
-                "[ItemComment] IS NULL) OR ([ItemComment] = @Original_ItemComment)) AND ((@IsNull" +
-                "_TotalPieces = 1 AND [TotalPieces] IS NULL) OR ([TotalPieces] = @Original_TotalP" +
-                "ieces)) AND ((@IsNull_BaleActualPriceTotal = 1 AND [BaleActualPriceTotal] IS NUL" +
-                "L) OR ([BaleActualPriceTotal] = @Original_BaleActualPriceTotal)) AND ((@IsNull_B" +
-                "aleShopPriceTotal = 1 AND [BaleShopPriceTotal] IS NULL) OR ([BaleShopPriceTotal]" +
-                " = @Original_BaleShopPriceTotal)) AND ((@IsNull_PiecesPerBaleTotal = 1 AND [Piec" +
-                "esPerBaleTotal] IS NULL) OR ([PiecesPerBaleTotal] = @Original_PiecesPerBaleTotal" +
-                ")) AND ((@IsNull_PiecesActualPriceTotal = 1 AND [PiecesActualPriceTotal] IS NULL" +
-                ") OR ([PiecesActualPriceTotal] = @Original_PiecesActualPriceTotal)) AND ((@IsNul" +
-                "l_PiecesShopPriceTotal = 1 AND [PiecesShopPriceTotal] IS NULL) OR ([PiecesShopPr" +
-                "iceTotal] = @Original_PiecesShopPriceTotal)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Customer] WHERE (([Id] = @Original_Id) AND ((@IsNull_CustomerName = 1 AND [CustomerName] IS NULL) OR ([CustomerName] = @Original_CustomerName)) AND ((@IsNull_CustomerID = 1 AND [CustomerID] IS NULL) OR ([CustomerID] = @Original_CustomerID)) AND ((@IsNull_DateBought = 1 AND [DateBought] IS NULL) OR ([DateBought] = @Original_DateBought)) AND ((@IsNull_ItemName = 1 AND [ItemName] IS NULL) OR ([ItemName] = @Original_ItemName)) AND ((@IsNull_Price = 1 AND [Price] IS NULL) OR ([Price] = @Original_Price)) AND ((@IsNull_Quantity = 1 AND [Quantity] IS NULL) OR ([Quantity] = @Original_Quantity)) AND ((@IsNull_ItemsSold = 1 AND [ItemsSold] IS NULL) OR ([ItemsSold] = @Original_ItemsSold)) AND ((@IsNull_PaymentType = 1 AND [PaymentType] IS NULL) OR ([PaymentType] = @Original_PaymentType)) AND ((@IsNull_Cash = 1 AND [Cash] IS NULL) OR ([Cash] = @Original_Cash)) AND ((@IsNull_Transfer = 1 AND [Transfer] IS NULL) OR ([Transfer] = @Original_Transfer)) AND ((@IsNull_Bank = 1 AND [Bank] IS NULL) OR ([Bank] = @Original_Bank)) AND ((@IsNull_SubTotal = 1 AND [SubTotal] IS NULL) OR ([SubTotal] = @Original_SubTotal)) AND ((@IsNull_Total = 1 AND [Total] IS NULL) OR ([Total] = @Original_Total)) AND ((@IsNull_ReducedPrice = 1 AND [ReducedPrice] IS NULL) OR ([ReducedPrice] = @Original_ReducedPrice)) AND ((@IsNull_Comment = 1 AND [Comment] IS NULL) OR ([Comment] = @Original_Comment)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_CustomerName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CustomerName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CustomerID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateBought", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateBought", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateBought", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateBought", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ItemName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ItemName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateArrived", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateArrived", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateArrived", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateArrived", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BaleQuantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleQuantity", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BaleQuantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleQuantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BaleActualPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleActualPrice", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BaleActualPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleActualPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BaleShopPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleShopPrice", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BaleShopPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleShopPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PiecesPerBale", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesPerBale", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PiecesPerBale", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesPerBale", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PiecesActualPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesActualPrice", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PiecesActualPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesActualPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PiecesShopPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesShopPrice", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PiecesShopPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesShopPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ItemComment", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemComment", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ItemComment", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemComment", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TotalPieces", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalPieces", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TotalPieces", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalPieces", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BaleActualPriceTotal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleActualPriceTotal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BaleActualPriceTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleActualPriceTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BaleShopPriceTotal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleShopPriceTotal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BaleShopPriceTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleShopPriceTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PiecesPerBaleTotal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesPerBaleTotal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PiecesPerBaleTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesPerBaleTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PiecesActualPriceTotal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesActualPriceTotal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PiecesActualPriceTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesActualPriceTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PiecesShopPriceTotal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesShopPriceTotal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PiecesShopPriceTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesShopPriceTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Price", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ItemsSold", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemsSold", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ItemsSold", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemsSold", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PaymentType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PaymentType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Cash", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cash", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cash", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cash", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Transfer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Transfer", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Transfer", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Transfer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Bank", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Bank", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Bank", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Bank", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SubTotal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SubTotal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SubTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SubTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Total", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Total", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Total", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Total", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ReducedPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ReducedPrice", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ReducedPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ReducedPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Comment", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comment", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Comment", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comment", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Items] ([ItemName], [DateArrived], [BaleQuantity], [BaleActualPrice], [BaleShopPrice], [PiecesPerBale], [PiecesActualPrice], [PiecesShopPrice], [ItemComment], [TotalPieces], [BaleActualPriceTotal], [BaleShopPriceTotal], [PiecesPerBaleTotal], [PiecesActualPriceTotal], [PiecesShopPriceTotal]) VALUES (@ItemName, @DateArrived, @BaleQuantity, @BaleActualPrice, @BaleShopPrice, @PiecesPerBale, @PiecesActualPrice, @PiecesShopPrice, @ItemComment, @TotalPieces, @BaleActualPriceTotal, @BaleShopPriceTotal, @PiecesPerBaleTotal, @PiecesActualPriceTotal, @PiecesShopPriceTotal);
-SELECT Id, ItemName, DateArrived, BaleQuantity, BaleActualPrice, BaleShopPrice, PiecesPerBale, PiecesActualPrice, PiecesShopPrice, ItemComment, TotalPieces, BaleActualPriceTotal, BaleShopPriceTotal, PiecesPerBaleTotal, PiecesActualPriceTotal, PiecesShopPriceTotal FROM Items WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Customer] ([CustomerName], [CustomerID], [DateBought], [ItemName], [Price], [Quantity], [ItemsSold], [PaymentType], [Cash], [Transfer], [Bank], [SubTotal], [Total], [ReducedPrice], [Comment]) VALUES (@CustomerName, @CustomerID, @DateBought, @ItemName, @Price, @Quantity, @ItemsSold, @PaymentType, @Cash, @Transfer, @Bank, @SubTotal, @Total, @ReducedPrice, @Comment);
+SELECT Id, CustomerName, CustomerID, DateBought, ItemName, Price, Quantity, ItemsSold, PaymentType, Cash, Transfer, Bank, SubTotal, Total, ReducedPrice, Comment FROM Customer WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateBought", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateBought", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateArrived", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateArrived", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BaleQuantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleQuantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BaleActualPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleActualPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BaleShopPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleShopPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PiecesPerBale", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesPerBale", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PiecesActualPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesActualPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PiecesShopPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesShopPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemComment", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemComment", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalPieces", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalPieces", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BaleActualPriceTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleActualPriceTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BaleShopPriceTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleShopPriceTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PiecesPerBaleTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesPerBaleTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PiecesActualPriceTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesActualPriceTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PiecesShopPriceTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesShopPriceTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemsSold", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemsSold", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaymentType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cash", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cash", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Transfer", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Transfer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Bank", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Bank", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SubTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SubTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Total", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Total", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ReducedPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ReducedPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Comment", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comment", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Items] SET [ItemName] = @ItemName, [DateArrived] = @DateArrived, [B" +
-                "aleQuantity] = @BaleQuantity, [BaleActualPrice] = @BaleActualPrice, [BaleShopPri" +
-                "ce] = @BaleShopPrice, [PiecesPerBale] = @PiecesPerBale, [PiecesActualPrice] = @P" +
-                "iecesActualPrice, [PiecesShopPrice] = @PiecesShopPrice, [ItemComment] = @ItemCom" +
-                "ment, [TotalPieces] = @TotalPieces, [BaleActualPriceTotal] = @BaleActualPriceTot" +
-                "al, [BaleShopPriceTotal] = @BaleShopPriceTotal, [PiecesPerBaleTotal] = @PiecesPe" +
-                "rBaleTotal, [PiecesActualPriceTotal] = @PiecesActualPriceTotal, [PiecesShopPrice" +
-                "Total] = @PiecesShopPriceTotal WHERE (([Id] = @Original_Id) AND ((@IsNull_ItemNa" +
-                "me = 1 AND [ItemName] IS NULL) OR ([ItemName] = @Original_ItemName)) AND ((@IsNu" +
-                "ll_DateArrived = 1 AND [DateArrived] IS NULL) OR ([DateArrived] = @Original_Date" +
-                "Arrived)) AND ((@IsNull_BaleQuantity = 1 AND [BaleQuantity] IS NULL) OR ([BaleQu" +
-                "antity] = @Original_BaleQuantity)) AND ((@IsNull_BaleActualPrice = 1 AND [BaleAc" +
-                "tualPrice] IS NULL) OR ([BaleActualPrice] = @Original_BaleActualPrice)) AND ((@I" +
-                "sNull_BaleShopPrice = 1 AND [BaleShopPrice] IS NULL) OR ([BaleShopPrice] = @Orig" +
-                "inal_BaleShopPrice)) AND ((@IsNull_PiecesPerBale = 1 AND [PiecesPerBale] IS NULL" +
-                ") OR ([PiecesPerBale] = @Original_PiecesPerBale)) AND ((@IsNull_PiecesActualPric" +
-                "e = 1 AND [PiecesActualPrice] IS NULL) OR ([PiecesActualPrice] = @Original_Piece" +
-                "sActualPrice)) AND ((@IsNull_PiecesShopPrice = 1 AND [PiecesShopPrice] IS NULL) " +
-                "OR ([PiecesShopPrice] = @Original_PiecesShopPrice)) AND ((@IsNull_ItemComment = " +
-                "1 AND [ItemComment] IS NULL) OR ([ItemComment] = @Original_ItemComment)) AND ((@" +
-                "IsNull_TotalPieces = 1 AND [TotalPieces] IS NULL) OR ([TotalPieces] = @Original_" +
-                "TotalPieces)) AND ((@IsNull_BaleActualPriceTotal = 1 AND [BaleActualPriceTotal] " +
-                "IS NULL) OR ([BaleActualPriceTotal] = @Original_BaleActualPriceTotal)) AND ((@Is" +
-                "Null_BaleShopPriceTotal = 1 AND [BaleShopPriceTotal] IS NULL) OR ([BaleShopPrice" +
-                "Total] = @Original_BaleShopPriceTotal)) AND ((@IsNull_PiecesPerBaleTotal = 1 AND" +
-                " [PiecesPerBaleTotal] IS NULL) OR ([PiecesPerBaleTotal] = @Original_PiecesPerBal" +
-                "eTotal)) AND ((@IsNull_PiecesActualPriceTotal = 1 AND [PiecesActualPriceTotal] I" +
-                "S NULL) OR ([PiecesActualPriceTotal] = @Original_PiecesActualPriceTotal)) AND ((" +
-                "@IsNull_PiecesShopPriceTotal = 1 AND [PiecesShopPriceTotal] IS NULL) OR ([Pieces" +
-                "ShopPriceTotal] = @Original_PiecesShopPriceTotal)));\r\nSELECT Id, ItemName, DateA" +
-                "rrived, BaleQuantity, BaleActualPrice, BaleShopPrice, PiecesPerBale, PiecesActua" +
-                "lPrice, PiecesShopPrice, ItemComment, TotalPieces, BaleActualPriceTotal, BaleSho" +
-                "pPriceTotal, PiecesPerBaleTotal, PiecesActualPriceTotal, PiecesShopPriceTotal FR" +
-                "OM Items WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Customer] SET [CustomerName] = @CustomerName, [CustomerID] = @Custo" +
+                "merID, [DateBought] = @DateBought, [ItemName] = @ItemName, [Price] = @Price, [Qu" +
+                "antity] = @Quantity, [ItemsSold] = @ItemsSold, [PaymentType] = @PaymentType, [Ca" +
+                "sh] = @Cash, [Transfer] = @Transfer, [Bank] = @Bank, [SubTotal] = @SubTotal, [To" +
+                "tal] = @Total, [ReducedPrice] = @ReducedPrice, [Comment] = @Comment WHERE (([Id]" +
+                " = @Original_Id) AND ((@IsNull_CustomerName = 1 AND [CustomerName] IS NULL) OR (" +
+                "[CustomerName] = @Original_CustomerName)) AND ((@IsNull_CustomerID = 1 AND [Cust" +
+                "omerID] IS NULL) OR ([CustomerID] = @Original_CustomerID)) AND ((@IsNull_DateBou" +
+                "ght = 1 AND [DateBought] IS NULL) OR ([DateBought] = @Original_DateBought)) AND " +
+                "((@IsNull_ItemName = 1 AND [ItemName] IS NULL) OR ([ItemName] = @Original_ItemNa" +
+                "me)) AND ((@IsNull_Price = 1 AND [Price] IS NULL) OR ([Price] = @Original_Price)" +
+                ") AND ((@IsNull_Quantity = 1 AND [Quantity] IS NULL) OR ([Quantity] = @Original_" +
+                "Quantity)) AND ((@IsNull_ItemsSold = 1 AND [ItemsSold] IS NULL) OR ([ItemsSold] " +
+                "= @Original_ItemsSold)) AND ((@IsNull_PaymentType = 1 AND [PaymentType] IS NULL)" +
+                " OR ([PaymentType] = @Original_PaymentType)) AND ((@IsNull_Cash = 1 AND [Cash] I" +
+                "S NULL) OR ([Cash] = @Original_Cash)) AND ((@IsNull_Transfer = 1 AND [Transfer] " +
+                "IS NULL) OR ([Transfer] = @Original_Transfer)) AND ((@IsNull_Bank = 1 AND [Bank]" +
+                " IS NULL) OR ([Bank] = @Original_Bank)) AND ((@IsNull_SubTotal = 1 AND [SubTotal" +
+                "] IS NULL) OR ([SubTotal] = @Original_SubTotal)) AND ((@IsNull_Total = 1 AND [To" +
+                "tal] IS NULL) OR ([Total] = @Original_Total)) AND ((@IsNull_ReducedPrice = 1 AND" +
+                " [ReducedPrice] IS NULL) OR ([ReducedPrice] = @Original_ReducedPrice)) AND ((@Is" +
+                "Null_Comment = 1 AND [Comment] IS NULL) OR ([Comment] = @Original_Comment)));\r\nS" +
+                "ELECT Id, CustomerName, CustomerID, DateBought, ItemName, Price, Quantity, Items" +
+                "Sold, PaymentType, Cash, Transfer, Bank, SubTotal, Total, ReducedPrice, Comment " +
+                "FROM Customer WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateBought", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateBought", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateArrived", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateArrived", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BaleQuantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleQuantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BaleActualPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleActualPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BaleShopPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleShopPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PiecesPerBale", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesPerBale", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PiecesActualPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesActualPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PiecesShopPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesShopPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemComment", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemComment", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalPieces", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalPieces", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BaleActualPriceTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleActualPriceTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BaleShopPriceTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleShopPriceTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PiecesPerBaleTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesPerBaleTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PiecesActualPriceTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesActualPriceTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PiecesShopPriceTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesShopPriceTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemsSold", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemsSold", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaymentType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cash", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cash", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Transfer", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Transfer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Bank", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Bank", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SubTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SubTotal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Total", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Total", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ReducedPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ReducedPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Comment", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comment", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_CustomerName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CustomerName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CustomerID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateBought", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateBought", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateBought", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateBought", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ItemName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ItemName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateArrived", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateArrived", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateArrived", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateArrived", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BaleQuantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleQuantity", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BaleQuantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleQuantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BaleActualPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleActualPrice", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BaleActualPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleActualPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BaleShopPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleShopPrice", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BaleShopPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleShopPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PiecesPerBale", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesPerBale", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PiecesPerBale", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesPerBale", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PiecesActualPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesActualPrice", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PiecesActualPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesActualPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PiecesShopPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesShopPrice", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PiecesShopPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesShopPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ItemComment", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemComment", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ItemComment", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemComment", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TotalPieces", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalPieces", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TotalPieces", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalPieces", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BaleActualPriceTotal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleActualPriceTotal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BaleActualPriceTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleActualPriceTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BaleShopPriceTotal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleShopPriceTotal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BaleShopPriceTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BaleShopPriceTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PiecesPerBaleTotal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesPerBaleTotal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PiecesPerBaleTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesPerBaleTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PiecesActualPriceTotal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesActualPriceTotal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PiecesActualPriceTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesActualPriceTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PiecesShopPriceTotal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesShopPriceTotal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PiecesShopPriceTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PiecesShopPriceTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Price", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ItemsSold", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemsSold", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ItemsSold", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ItemsSold", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PaymentType", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentType", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PaymentType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Cash", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cash", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cash", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cash", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Transfer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Transfer", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Transfer", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Transfer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Bank", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Bank", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Bank", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Bank", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SubTotal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SubTotal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SubTotal", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SubTotal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Total", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Total", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Total", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Total", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ReducedPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ReducedPrice", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ReducedPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ReducedPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Comment", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comment", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Comment", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comment", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -1544,23 +1519,24 @@ SELECT Id, ItemName, DateArrived, BaleQuantity, BaleActualPrice, BaleShopPrice, 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT Id, ItemName, DateArrived, BaleQuantity, BaleActualPrice, BaleShopPrice, PiecesPerBale, PiecesActualPrice, PiecesShopPrice, ItemComment, TotalPieces, BaleActualPriceTotal, BaleShopPriceTotal, PiecesPerBaleTotal, PiecesActualPriceTotal, PiecesShopPriceTotal FROM dbo.Items";
+            this._commandCollection[0].CommandText = "SELECT Id, CustomerName, CustomerID, DateBought, ItemName, Price, Quantity, Items" +
+                "Sold, PaymentType, Cash, Transfer, Bank, SubTotal, Total, ReducedPrice, Comment " +
+                "FROM dbo.Customer";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT        Id, ItemName, DateArrived, BaleQuantity, BaleActualPrice, BaleShopPrice, PiecesPerBale, PiecesActualPrice, PiecesShopPrice, ItemComment, TotalPieces, BaleActualPriceTotal, BaleShopPriceTotal, PiecesPerBaleTotal, 
-                         PiecesActualPriceTotal, PiecesShopPriceTotal
-FROM            Items
-WHERE        (ItemName LIKE @ItemName)";
+            this._commandCollection[1].CommandText = "SELECT        Id, CustomerName, CustomerID, DateBought, ItemName, Price, Quantity" +
+                ", ItemsSold, PaymentType, Cash, Transfer, Bank, SubTotal, Total, ReducedPrice, C" +
+                "omment\r\nFROM            Customer\r\nWHERE        (CustomerID LIKE @CustomerID)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ItemName", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "ItemName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(Gargai.ItemsDataTable dataTable) {
+        public virtual int Fill(Gargai.CustomerDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1573,9 +1549,9 @@ WHERE        (ItemName LIKE @ItemName)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual Gargai.ItemsDataTable GetData() {
+        public virtual Gargai.CustomerDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            Gargai.ItemsDataTable dataTable = new Gargai.ItemsDataTable();
+            Gargai.CustomerDataTable dataTable = new Gargai.CustomerDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1584,13 +1560,13 @@ WHERE        (ItemName LIKE @ItemName)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByItemName(Gargai.ItemsDataTable dataTable, string ItemName) {
+        public virtual int FillByCustomerID(Gargai.CustomerDataTable dataTable, string CustomerID) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((ItemName == null)) {
+            if ((CustomerID == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(ItemName));
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(CustomerID));
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1603,15 +1579,15 @@ WHERE        (ItemName LIKE @ItemName)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual Gargai.ItemsDataTable GetDataByItemName(string ItemName) {
+        public virtual Gargai.CustomerDataTable GetDataByCustomerID(string CustomerID) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((ItemName == null)) {
+            if ((CustomerID == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(ItemName));
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(CustomerID));
             }
-            Gargai.ItemsDataTable dataTable = new Gargai.ItemsDataTable();
+            Gargai.CustomerDataTable dataTable = new Gargai.CustomerDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1619,7 +1595,7 @@ WHERE        (ItemName LIKE @ItemName)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(Gargai.ItemsDataTable dataTable) {
+        public virtual int Update(Gargai.CustomerDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -1627,7 +1603,7 @@ WHERE        (ItemName LIKE @ItemName)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(Gargai dataSet) {
-            return this.Adapter.Update(dataSet, "Items");
+            return this.Adapter.Update(dataSet, "Customer");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1651,141 +1627,141 @@ WHERE        (ItemName LIKE @ItemName)";
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(
                     int Original_Id, 
+                    string Original_CustomerName, 
+                    string Original_CustomerID, 
+                    global::System.Nullable<global::System.DateTime> Original_DateBought, 
                     string Original_ItemName, 
-                    global::System.Nullable<global::System.DateTime> Original_DateArrived, 
-                    global::System.Nullable<int> Original_BaleQuantity, 
-                    global::System.Nullable<double> Original_BaleActualPrice, 
-                    global::System.Nullable<double> Original_BaleShopPrice, 
-                    global::System.Nullable<int> Original_PiecesPerBale, 
-                    global::System.Nullable<double> Original_PiecesActualPrice, 
-                    global::System.Nullable<double> Original_PiecesShopPrice, 
-                    string Original_ItemComment, 
-                    global::System.Nullable<int> Original_TotalPieces, 
-                    global::System.Nullable<double> Original_BaleActualPriceTotal, 
-                    global::System.Nullable<double> Original_BaleShopPriceTotal, 
-                    global::System.Nullable<double> Original_PiecesPerBaleTotal, 
-                    global::System.Nullable<double> Original_PiecesActualPriceTotal, 
-                    global::System.Nullable<double> Original_PiecesShopPriceTotal) {
+                    global::System.Nullable<double> Original_Price, 
+                    global::System.Nullable<int> Original_Quantity, 
+                    global::System.Nullable<int> Original_ItemsSold, 
+                    string Original_PaymentType, 
+                    string Original_Cash, 
+                    string Original_Transfer, 
+                    string Original_Bank, 
+                    global::System.Nullable<double> Original_SubTotal, 
+                    global::System.Nullable<double> Original_Total, 
+                    global::System.Nullable<double> Original_ReducedPrice, 
+                    string Original_Comment) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
-            if ((Original_ItemName == null)) {
+            if ((Original_CustomerName == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_ItemName));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_CustomerName));
             }
-            if ((Original_DateArrived.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_DateArrived.Value));
-            }
-            else {
+            if ((Original_CustomerID == null)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Original_BaleQuantity.HasValue == true)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_CustomerID));
+            }
+            if ((Original_DateBought.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_BaleQuantity.Value));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_DateBought.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Original_BaleActualPrice.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((double)(Original_BaleActualPrice.Value));
-            }
-            else {
+            if ((Original_ItemName == null)) {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Original_BaleShopPrice.HasValue == true)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_ItemName));
+            }
+            if ((Original_Price.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((double)(Original_BaleShopPrice.Value));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((double)(Original_Price.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((Original_PiecesPerBale.HasValue == true)) {
+            if ((Original_Quantity.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((int)(Original_PiecesPerBale.Value));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((int)(Original_Quantity.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((Original_PiecesActualPrice.HasValue == true)) {
+            if ((Original_ItemsSold.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((double)(Original_PiecesActualPrice.Value));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((int)(Original_ItemsSold.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            if ((Original_PiecesShopPrice.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((double)(Original_PiecesShopPrice.Value));
-            }
-            else {
+            if ((Original_PaymentType == null)) {
                 this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            if ((Original_ItemComment == null)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((string)(Original_PaymentType));
+            }
+            if ((Original_Cash == null)) {
                 this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[18].Value = ((string)(Original_ItemComment));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((string)(Original_Cash));
             }
-            if ((Original_TotalPieces.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((int)(Original_TotalPieces.Value));
-            }
-            else {
+            if ((Original_Transfer == null)) {
                 this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
-            if ((Original_BaleActualPriceTotal.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[22].Value = ((double)(Original_BaleActualPriceTotal.Value));
-            }
             else {
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((string)(Original_Transfer));
+            }
+            if ((Original_Bank == null)) {
                 this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
-            if ((Original_BaleShopPriceTotal.HasValue == true)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((string)(Original_Bank));
+            }
+            if ((Original_SubTotal.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[24].Value = ((double)(Original_BaleShopPriceTotal.Value));
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((double)(Original_SubTotal.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
-            if ((Original_PiecesPerBaleTotal.HasValue == true)) {
+            if ((Original_Total.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[26].Value = ((double)(Original_PiecesPerBaleTotal.Value));
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((double)(Original_Total.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
-            if ((Original_PiecesActualPriceTotal.HasValue == true)) {
+            if ((Original_ReducedPrice.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[28].Value = ((double)(Original_PiecesActualPriceTotal.Value));
+                this.Adapter.DeleteCommand.Parameters[28].Value = ((double)(Original_ReducedPrice.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
-            if ((Original_PiecesShopPriceTotal.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[29].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[30].Value = ((double)(Original_PiecesShopPriceTotal.Value));
-            }
-            else {
+            if ((Original_Comment == null)) {
                 this.Adapter.DeleteCommand.Parameters[29].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[30].Value = ((string)(Original_Comment));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1807,96 +1783,96 @@ WHERE        (ItemName LIKE @ItemName)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string ItemName, global::System.Nullable<global::System.DateTime> DateArrived, global::System.Nullable<int> BaleQuantity, global::System.Nullable<double> BaleActualPrice, global::System.Nullable<double> BaleShopPrice, global::System.Nullable<int> PiecesPerBale, global::System.Nullable<double> PiecesActualPrice, global::System.Nullable<double> PiecesShopPrice, string ItemComment, global::System.Nullable<int> TotalPieces, global::System.Nullable<double> BaleActualPriceTotal, global::System.Nullable<double> BaleShopPriceTotal, global::System.Nullable<double> PiecesPerBaleTotal, global::System.Nullable<double> PiecesActualPriceTotal, global::System.Nullable<double> PiecesShopPriceTotal) {
-            if ((ItemName == null)) {
+        public virtual int Insert(string CustomerName, string CustomerID, global::System.Nullable<global::System.DateTime> DateBought, string ItemName, global::System.Nullable<double> Price, global::System.Nullable<int> Quantity, global::System.Nullable<int> ItemsSold, string PaymentType, string Cash, string Transfer, string Bank, global::System.Nullable<double> SubTotal, global::System.Nullable<double> Total, global::System.Nullable<double> ReducedPrice, string Comment) {
+            if ((CustomerName == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(ItemName));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(CustomerName));
             }
-            if ((DateArrived.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(DateArrived.Value));
-            }
-            else {
+            if ((CustomerID == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((BaleQuantity.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(BaleQuantity.Value));
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(CustomerID));
+            }
+            if ((DateBought.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(DateBought.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((BaleActualPrice.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((double)(BaleActualPrice.Value));
-            }
-            else {
+            if ((ItemName == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((BaleShopPrice.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((double)(BaleShopPrice.Value));
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(ItemName));
+            }
+            if ((Price.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((double)(Price.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((PiecesPerBale.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(PiecesPerBale.Value));
+            if ((Quantity.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(Quantity.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((PiecesActualPrice.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((double)(PiecesActualPrice.Value));
+            if ((ItemsSold.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(ItemsSold.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((PiecesShopPrice.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((double)(PiecesShopPrice.Value));
-            }
-            else {
+            if ((PaymentType == null)) {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((ItemComment == null)) {
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(PaymentType));
+            }
+            if ((Cash == null)) {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(ItemComment));
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(Cash));
             }
-            if ((TotalPieces.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((int)(TotalPieces.Value));
-            }
-            else {
+            if ((Transfer == null)) {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((BaleActualPriceTotal.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((double)(BaleActualPriceTotal.Value));
-            }
             else {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(Transfer));
+            }
+            if ((Bank == null)) {
                 this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((BaleShopPriceTotal.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((double)(BaleShopPriceTotal.Value));
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(Bank));
+            }
+            if ((SubTotal.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((double)(SubTotal.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((PiecesPerBaleTotal.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((double)(PiecesPerBaleTotal.Value));
+            if ((Total.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((double)(Total.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((PiecesActualPriceTotal.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((double)(PiecesActualPriceTotal.Value));
+            if ((ReducedPrice.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((double)(ReducedPrice.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((PiecesShopPriceTotal.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[14].Value = ((double)(PiecesShopPriceTotal.Value));
+            if ((Comment == null)) {
+                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(Comment));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1919,248 +1895,248 @@ WHERE        (ItemName LIKE @ItemName)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
+                    string CustomerName, 
+                    string CustomerID, 
+                    global::System.Nullable<global::System.DateTime> DateBought, 
                     string ItemName, 
-                    global::System.Nullable<global::System.DateTime> DateArrived, 
-                    global::System.Nullable<int> BaleQuantity, 
-                    global::System.Nullable<double> BaleActualPrice, 
-                    global::System.Nullable<double> BaleShopPrice, 
-                    global::System.Nullable<int> PiecesPerBale, 
-                    global::System.Nullable<double> PiecesActualPrice, 
-                    global::System.Nullable<double> PiecesShopPrice, 
-                    string ItemComment, 
-                    global::System.Nullable<int> TotalPieces, 
-                    global::System.Nullable<double> BaleActualPriceTotal, 
-                    global::System.Nullable<double> BaleShopPriceTotal, 
-                    global::System.Nullable<double> PiecesPerBaleTotal, 
-                    global::System.Nullable<double> PiecesActualPriceTotal, 
-                    global::System.Nullable<double> PiecesShopPriceTotal, 
+                    global::System.Nullable<double> Price, 
+                    global::System.Nullable<int> Quantity, 
+                    global::System.Nullable<int> ItemsSold, 
+                    string PaymentType, 
+                    string Cash, 
+                    string Transfer, 
+                    string Bank, 
+                    global::System.Nullable<double> SubTotal, 
+                    global::System.Nullable<double> Total, 
+                    global::System.Nullable<double> ReducedPrice, 
+                    string Comment, 
                     int Original_Id, 
+                    string Original_CustomerName, 
+                    string Original_CustomerID, 
+                    global::System.Nullable<global::System.DateTime> Original_DateBought, 
                     string Original_ItemName, 
-                    global::System.Nullable<global::System.DateTime> Original_DateArrived, 
-                    global::System.Nullable<int> Original_BaleQuantity, 
-                    global::System.Nullable<double> Original_BaleActualPrice, 
-                    global::System.Nullable<double> Original_BaleShopPrice, 
-                    global::System.Nullable<int> Original_PiecesPerBale, 
-                    global::System.Nullable<double> Original_PiecesActualPrice, 
-                    global::System.Nullable<double> Original_PiecesShopPrice, 
-                    string Original_ItemComment, 
-                    global::System.Nullable<int> Original_TotalPieces, 
-                    global::System.Nullable<double> Original_BaleActualPriceTotal, 
-                    global::System.Nullable<double> Original_BaleShopPriceTotal, 
-                    global::System.Nullable<double> Original_PiecesPerBaleTotal, 
-                    global::System.Nullable<double> Original_PiecesActualPriceTotal, 
-                    global::System.Nullable<double> Original_PiecesShopPriceTotal, 
+                    global::System.Nullable<double> Original_Price, 
+                    global::System.Nullable<int> Original_Quantity, 
+                    global::System.Nullable<int> Original_ItemsSold, 
+                    string Original_PaymentType, 
+                    string Original_Cash, 
+                    string Original_Transfer, 
+                    string Original_Bank, 
+                    global::System.Nullable<double> Original_SubTotal, 
+                    global::System.Nullable<double> Original_Total, 
+                    global::System.Nullable<double> Original_ReducedPrice, 
+                    string Original_Comment, 
                     int Id) {
-            if ((ItemName == null)) {
+            if ((CustomerName == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(ItemName));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(CustomerName));
             }
-            if ((DateArrived.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(DateArrived.Value));
-            }
-            else {
+            if ((CustomerID == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((BaleQuantity.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(BaleQuantity.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(CustomerID));
+            }
+            if ((DateBought.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(DateBought.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((BaleActualPrice.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((double)(BaleActualPrice.Value));
-            }
-            else {
+            if ((ItemName == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((BaleShopPrice.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((double)(BaleShopPrice.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(ItemName));
+            }
+            if ((Price.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((double)(Price.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((PiecesPerBale.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(PiecesPerBale.Value));
+            if ((Quantity.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Quantity.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((PiecesActualPrice.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((double)(PiecesActualPrice.Value));
+            if ((ItemsSold.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(ItemsSold.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((PiecesShopPrice.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(PiecesShopPrice.Value));
-            }
-            else {
+            if ((PaymentType == null)) {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((ItemComment == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(PaymentType));
+            }
+            if ((Cash == null)) {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(ItemComment));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Cash));
             }
-            if ((TotalPieces.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(TotalPieces.Value));
-            }
-            else {
+            if ((Transfer == null)) {
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((BaleActualPriceTotal.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((double)(BaleActualPriceTotal.Value));
-            }
             else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Transfer));
+            }
+            if ((Bank == null)) {
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((BaleShopPriceTotal.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((double)(BaleShopPriceTotal.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Bank));
+            }
+            if ((SubTotal.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((double)(SubTotal.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((PiecesPerBaleTotal.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((double)(PiecesPerBaleTotal.Value));
+            if ((Total.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((double)(Total.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((PiecesActualPriceTotal.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((double)(PiecesActualPriceTotal.Value));
+            if ((ReducedPrice.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((double)(ReducedPrice.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((PiecesShopPriceTotal.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((double)(PiecesShopPriceTotal.Value));
-            }
-            else {
+            if ((Comment == null)) {
                 this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
+            else {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Comment));
+            }
             this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_Id));
-            if ((Original_ItemName == null)) {
+            if ((Original_CustomerName == null)) {
                 this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_ItemName));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_CustomerName));
             }
-            if ((Original_DateArrived.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((System.DateTime)(Original_DateArrived.Value));
-            }
-            else {
+            if ((Original_CustomerID == null)) {
                 this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
-            if ((Original_BaleQuantity.HasValue == true)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_CustomerID));
+            }
+            if ((Original_DateBought.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(Original_BaleQuantity.Value));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((System.DateTime)(Original_DateBought.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
-            if ((Original_BaleActualPrice.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((double)(Original_BaleActualPrice.Value));
-            }
-            else {
+            if ((Original_ItemName == null)) {
                 this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
-            if ((Original_BaleShopPrice.HasValue == true)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Original_ItemName));
+            }
+            if ((Original_Price.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((double)(Original_BaleShopPrice.Value));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((double)(Original_Price.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
-            if ((Original_PiecesPerBale.HasValue == true)) {
+            if ((Original_Quantity.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((int)(Original_PiecesPerBale.Value));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((int)(Original_Quantity.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
-            if ((Original_PiecesActualPrice.HasValue == true)) {
+            if ((Original_ItemsSold.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((double)(Original_PiecesActualPrice.Value));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((int)(Original_ItemsSold.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
-            if ((Original_PiecesShopPrice.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((double)(Original_PiecesShopPrice.Value));
-            }
-            else {
+            if ((Original_PaymentType == null)) {
                 this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
-            if ((Original_ItemComment == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Original_PaymentType));
+            }
+            if ((Original_Cash == null)) {
                 this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(Original_ItemComment));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(Original_Cash));
             }
-            if ((Original_TotalPieces.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((int)(Original_TotalPieces.Value));
-            }
-            else {
+            if ((Original_Transfer == null)) {
                 this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
             }
-            if ((Original_BaleActualPriceTotal.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((double)(Original_BaleActualPriceTotal.Value));
-            }
             else {
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((string)(Original_Transfer));
+            }
+            if ((Original_Bank == null)) {
                 this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
             }
-            if ((Original_BaleShopPriceTotal.HasValue == true)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((string)(Original_Bank));
+            }
+            if ((Original_SubTotal.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((double)(Original_BaleShopPriceTotal.Value));
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((double)(Original_SubTotal.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
             }
-            if ((Original_PiecesPerBaleTotal.HasValue == true)) {
+            if ((Original_Total.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((double)(Original_PiecesPerBaleTotal.Value));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((double)(Original_Total.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
             }
-            if ((Original_PiecesActualPriceTotal.HasValue == true)) {
+            if ((Original_ReducedPrice.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((double)(Original_PiecesActualPriceTotal.Value));
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((double)(Original_ReducedPrice.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
             }
-            if ((Original_PiecesShopPriceTotal.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((double)(Original_PiecesShopPriceTotal.Value));
-            }
-            else {
+            if ((Original_Comment == null)) {
                 this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((string)(Original_Comment));
             }
             this.Adapter.UpdateCommand.Parameters[46].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
@@ -2184,38 +2160,38 @@ WHERE        (ItemName LIKE @ItemName)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
+                    string CustomerName, 
+                    string CustomerID, 
+                    global::System.Nullable<global::System.DateTime> DateBought, 
                     string ItemName, 
-                    global::System.Nullable<global::System.DateTime> DateArrived, 
-                    global::System.Nullable<int> BaleQuantity, 
-                    global::System.Nullable<double> BaleActualPrice, 
-                    global::System.Nullable<double> BaleShopPrice, 
-                    global::System.Nullable<int> PiecesPerBale, 
-                    global::System.Nullable<double> PiecesActualPrice, 
-                    global::System.Nullable<double> PiecesShopPrice, 
-                    string ItemComment, 
-                    global::System.Nullable<int> TotalPieces, 
-                    global::System.Nullable<double> BaleActualPriceTotal, 
-                    global::System.Nullable<double> BaleShopPriceTotal, 
-                    global::System.Nullable<double> PiecesPerBaleTotal, 
-                    global::System.Nullable<double> PiecesActualPriceTotal, 
-                    global::System.Nullable<double> PiecesShopPriceTotal, 
+                    global::System.Nullable<double> Price, 
+                    global::System.Nullable<int> Quantity, 
+                    global::System.Nullable<int> ItemsSold, 
+                    string PaymentType, 
+                    string Cash, 
+                    string Transfer, 
+                    string Bank, 
+                    global::System.Nullable<double> SubTotal, 
+                    global::System.Nullable<double> Total, 
+                    global::System.Nullable<double> ReducedPrice, 
+                    string Comment, 
                     int Original_Id, 
+                    string Original_CustomerName, 
+                    string Original_CustomerID, 
+                    global::System.Nullable<global::System.DateTime> Original_DateBought, 
                     string Original_ItemName, 
-                    global::System.Nullable<global::System.DateTime> Original_DateArrived, 
-                    global::System.Nullable<int> Original_BaleQuantity, 
-                    global::System.Nullable<double> Original_BaleActualPrice, 
-                    global::System.Nullable<double> Original_BaleShopPrice, 
-                    global::System.Nullable<int> Original_PiecesPerBale, 
-                    global::System.Nullable<double> Original_PiecesActualPrice, 
-                    global::System.Nullable<double> Original_PiecesShopPrice, 
-                    string Original_ItemComment, 
-                    global::System.Nullable<int> Original_TotalPieces, 
-                    global::System.Nullable<double> Original_BaleActualPriceTotal, 
-                    global::System.Nullable<double> Original_BaleShopPriceTotal, 
-                    global::System.Nullable<double> Original_PiecesPerBaleTotal, 
-                    global::System.Nullable<double> Original_PiecesActualPriceTotal, 
-                    global::System.Nullable<double> Original_PiecesShopPriceTotal) {
-            return this.Update(ItemName, DateArrived, BaleQuantity, BaleActualPrice, BaleShopPrice, PiecesPerBale, PiecesActualPrice, PiecesShopPrice, ItemComment, TotalPieces, BaleActualPriceTotal, BaleShopPriceTotal, PiecesPerBaleTotal, PiecesActualPriceTotal, PiecesShopPriceTotal, Original_Id, Original_ItemName, Original_DateArrived, Original_BaleQuantity, Original_BaleActualPrice, Original_BaleShopPrice, Original_PiecesPerBale, Original_PiecesActualPrice, Original_PiecesShopPrice, Original_ItemComment, Original_TotalPieces, Original_BaleActualPriceTotal, Original_BaleShopPriceTotal, Original_PiecesPerBaleTotal, Original_PiecesActualPriceTotal, Original_PiecesShopPriceTotal, Original_Id);
+                    global::System.Nullable<double> Original_Price, 
+                    global::System.Nullable<int> Original_Quantity, 
+                    global::System.Nullable<int> Original_ItemsSold, 
+                    string Original_PaymentType, 
+                    string Original_Cash, 
+                    string Original_Transfer, 
+                    string Original_Bank, 
+                    global::System.Nullable<double> Original_SubTotal, 
+                    global::System.Nullable<double> Original_Total, 
+                    global::System.Nullable<double> Original_ReducedPrice, 
+                    string Original_Comment) {
+            return this.Update(CustomerName, CustomerID, DateBought, ItemName, Price, Quantity, ItemsSold, PaymentType, Cash, Transfer, Bank, SubTotal, Total, ReducedPrice, Comment, Original_Id, Original_CustomerName, Original_CustomerID, Original_DateBought, Original_ItemName, Original_Price, Original_Quantity, Original_ItemsSold, Original_PaymentType, Original_Cash, Original_Transfer, Original_Bank, Original_SubTotal, Original_Total, Original_ReducedPrice, Original_Comment, Original_Id);
         }
     }
     
@@ -2231,7 +2207,7 @@ WHERE        (ItemName LIKE @ItemName)";
         
         private UpdateOrderOption _updateOrder;
         
-        private ItemsTableAdapter _itemsTableAdapter;
+        private CustomerTableAdapter _customerTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -2253,12 +2229,12 @@ WHERE        (ItemName LIKE @ItemName)";
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public ItemsTableAdapter ItemsTableAdapter {
+        public CustomerTableAdapter CustomerTableAdapter {
             get {
-                return this._itemsTableAdapter;
+                return this._customerTableAdapter;
             }
             set {
-                this._itemsTableAdapter = value;
+                this._customerTableAdapter = value;
             }
         }
         
@@ -2281,9 +2257,9 @@ WHERE        (ItemName LIKE @ItemName)";
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._itemsTableAdapter != null) 
-                            && (this._itemsTableAdapter.Connection != null))) {
-                    return this._itemsTableAdapter.Connection;
+                if (((this._customerTableAdapter != null) 
+                            && (this._customerTableAdapter.Connection != null))) {
+                    return this._customerTableAdapter.Connection;
                 }
                 return null;
             }
@@ -2298,7 +2274,7 @@ WHERE        (ItemName LIKE @ItemName)";
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._itemsTableAdapter != null)) {
+                if ((this._customerTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -2312,12 +2288,12 @@ WHERE        (ItemName LIKE @ItemName)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateUpdatedRows(Gargai dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._itemsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Items.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._customerTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Customer.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._itemsTableAdapter.Update(updatedRows));
+                    result = (result + this._customerTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -2331,11 +2307,11 @@ WHERE        (ItemName LIKE @ItemName)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateInsertedRows(Gargai dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._itemsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Items.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._customerTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Customer.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._itemsTableAdapter.Update(addedRows));
+                    result = (result + this._customerTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -2349,11 +2325,11 @@ WHERE        (ItemName LIKE @ItemName)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateDeletedRows(Gargai dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._itemsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Items.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._customerTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Customer.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._itemsTableAdapter.Update(deletedRows));
+                    result = (result + this._customerTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -2396,8 +2372,8 @@ WHERE        (ItemName LIKE @ItemName)";
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._itemsTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._itemsTableAdapter.Connection) == false))) {
+            if (((this._customerTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._customerTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -2433,13 +2409,13 @@ WHERE        (ItemName LIKE @ItemName)";
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._itemsTableAdapter != null)) {
-                    revertConnections.Add(this._itemsTableAdapter, this._itemsTableAdapter.Connection);
-                    this._itemsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._itemsTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._itemsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._itemsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._itemsTableAdapter.Adapter);
+                if ((this._customerTableAdapter != null)) {
+                    revertConnections.Add(this._customerTableAdapter, this._customerTableAdapter.Connection);
+                    this._customerTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._customerTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._customerTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._customerTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._customerTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -2500,9 +2476,9 @@ WHERE        (ItemName LIKE @ItemName)";
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._itemsTableAdapter != null)) {
-                    this._itemsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._itemsTableAdapter]));
-                    this._itemsTableAdapter.Transaction = null;
+                if ((this._customerTableAdapter != null)) {
+                    this._customerTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._customerTableAdapter]));
+                    this._customerTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

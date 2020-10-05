@@ -118,23 +118,24 @@ materialDesign:HintAssist.HelperText="This Field is required!"
             </Grid>
 
 
-            <Grid Width="400" Margin="10 0 0 50">
+            <Grid Width="400" Margin="0 0 0 50">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="13*"/>
                 </Grid.ColumnDefinitions>
 
                 <materialDesign:PackIcon Kind="Key" Grid.Column="0"
                                                  HorizontalAlignment="Center"
                                                  VerticalAlignment="Bottom"
-                                                 Width="20" Height="20"/>
+                                                 Width="30" Height="20"/>
                 <PasswordBox
   x:Name="Password" Grid.Column="1"
   materialDesign:HintAssist.Hint="Password"
   materialDesign:TextFieldAssist.HasClearButton="True"
-Margin="30 20 20 0" FontSize="14" FontWeight="Bold"
+Margin="20 20 20 0" FontSize="14" FontWeight="Bold"
 materialDesign:HintAssist.HelperText="This Field is required!"
-KeyDown="Password_KeyDown"/>
+KeyDown="Password_KeyDown" Grid.ColumnSpan="2"/>
 
             </Grid>
 
@@ -158,5 +159,11 @@ Width="150" ToolTip="Forgot Password?" Margin="40 0 0 0">
             </Grid>
 
         </StackPanel>
+
+        <ProgressBar Grid.Column="1" VerticalAlignment="Bottom"
+  Style="{StaticResource MaterialDesignCircularProgressBar}"
+  Value="0" Width="30" Height="30" Margin="0 80" x:Name="Prog"
+  IsIndeterminate="True" Visibility="Collapsed"/>
+
     </Grid>
 </Page>

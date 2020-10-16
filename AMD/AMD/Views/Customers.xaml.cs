@@ -18,6 +18,7 @@ namespace AMD.Views
             InitializeComponent();
             this._navigationServiceEx = NavigationServiceEx.Instance;
             this._navigationServiceEx.Navigated += this.NavigationServiceEx_OnNavigated;
+            NewCustomers.Content = new CustomersPage();
         }
 
         private void NavigationServiceEx_OnNavigated(object sender, NavigationEventArgs e)
@@ -62,6 +63,11 @@ namespace AMD.Views
         private void NewCustomerRB_Click(object sender, RoutedEventArgs e)
         {
             NewCustomers.Content = new NewCustomerPage();
+        }
+
+        private void CustomerRB_Click(object sender, RoutedEventArgs e)
+        {
+            NewCustomers.Content = new CustomersPage();
         }
     }
 }

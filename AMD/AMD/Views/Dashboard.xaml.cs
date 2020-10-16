@@ -1,5 +1,6 @@
 ﻿using AMD.Navigation;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,11 +23,6 @@ namespace AMD.Views
             InitializeComponent();
             this._navigationServiceEx = NavigationServiceEx.Instance;
             this._navigationServiceEx.Navigated += this.NavigationServiceEx_OnNavigated;
-
-            List<items> items = new List<items>();
-            items.Add(new items() { Id = 1, Items = "Roba", date = new DateTime(2019, 08, 02), Price = 5000, All = 200, Sold = 130, Remain = 70 });
-            Items.ItemsSource = items;
-            // Navigate to login page.
             //this.Loaded += (sender, args) =>
             //    this._navigationServiceEx.Navigate(new Uri("Views/Dashboard.xaml", UriKind.RelativeOrAbsolute));
         }
@@ -38,11 +34,20 @@ namespace AMD.Views
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+
             db.Visibility = Visibility.Visible;
             it.Visibility = Visibility.Hidden;
             cm.Visibility = Visibility.Hidden;
             //rc.Visibility = Visibility.Hidden;
             ac.Visibility = Visibility.Hidden;
+
+            AMDDataContext db1 = new AMDDataContext();
+            var query = from p in db1.Items
+                        select p;
+
+            dgvItems.ItemsSource = query;
+
+
         }
 
         private void btnDashboard_Click(object sender, RoutedEventArgs e)
@@ -72,15 +77,5 @@ namespace AMD.Views
         }
     }
 
-    public class items
-    {
-        public int Id { get; set; }
-        public string Items { get; set; }
-        public DateTime date { get; set; }
-        public int Price { get; set; }
-        public int All { get; set; }
-        public int Sold { get; set; }
-        public int Remain { get; set; }
-
-    }
+   
 }

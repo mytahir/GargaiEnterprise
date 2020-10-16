@@ -86,7 +86,7 @@
     Margin="2">
                     <RadioButton
       Style="{StaticResource MaterialDesignTabRadioButton}"
-      Margin="4"
+      Margin="4" x:Name="CustomerRB" Click="CustomerRB_Click"
       IsChecked="True"
       Content="Customers" />
                     <RadioButton

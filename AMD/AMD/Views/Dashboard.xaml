@@ -74,7 +74,25 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
-            <DataGrid x:Name="Items" />
+            <DataGrid x:Name="dgvItems" AutoGenerateColumns="False" VerticalScrollBarVisibility="Auto">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=ItemName}" Header="Item Name" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Path=DateArrived}" Header="Date Arrived"  IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Path=BaleQuantity}" Header="Bale Quantity"  IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Path=BaleActualPrice}" Header="Bale Actual Price"  IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Path=BaleShopPrice}" Header="Bale Shop Price"  IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Path=PiecesPerBale}" Header="Pieces Per Bale"  IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Path=PiecesActualPrice}" Header="Pieces Actual Price"  IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Path=PiecesShopPrice}" Header="Pieces Shop Price"  IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Path=TotalPieces}" Header="Total Pieces"  IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Path=PiecesPerBaleTotal}" Header="Total Pieces Per Bale"  IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Path=PiecesActualPriceTotal}" Header="Total Pieces Actual Price"  IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Path=PiecesShopPriceTotal}" Header="Total Pieces Shop Price"  IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Path=BaleActualPriceTotal}" Header="Total Bale Actual Price"  IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Path=BaleShopPriceTotal}" Header="Total Bale Shop Price"  IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Path=ItemComment}" Header="Item Comment"  IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </Grid>
 </Page>

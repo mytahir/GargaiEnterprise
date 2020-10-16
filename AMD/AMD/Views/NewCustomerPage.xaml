@@ -22,16 +22,28 @@
                     Grid.Row="0" Margin="20 20 0 20"
                     >
 
+                <StackPanel Margin="0 0 40 0" Width="310" Orientation="Horizontal">
                     <TextBox x:Name="txtCustomerFullName"
     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
     VerticalAlignment="Top" HorizontalAlignment="Left"
-    Width="300"  Margin="0 0 40 0"
-    AcceptsReturn="False"
-    TextWrapping="Wrap" LostFocus="txtFullName_LostFocus"
+    AcceptsReturn="False" Width="260"
+    TextWrapping="Wrap" TextChanged="txtCustomerFullName_TextChanged"
     VerticalScrollBarVisibility="Auto"
     materialDesign:HintAssist.Hint="Customer Name"
     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
 
+                    <Button VerticalAlignment="Center"
+  Style="{StaticResource MaterialDesignIconButton}"
+  ToolTip="Remove Customer" x:Name="RemoveCustomer" Click="RemoveCustomer_Click">
+                        <materialDesign:PackIcon Kind="CloseBox" 
+                                             Width="25" Height="25"
+                                                 VerticalAlignment="Center"/>
+                    </Button>
+                    
+                   
+                </StackPanel>
+
+                    
                     <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}"
                         Width="100" TextWrapping="Wrap" Text="Customer ID:" />
 
@@ -71,12 +83,12 @@
                     Style="{StaticResource MaterialDesignFilledComboBox}"
                     x:Name="ItemsToPrint" SelectionChanged="ItemsToPrint_SelectionChanged"
                     materialDesign:HintAssist.Hint="Select Items" 
-                    Width="150" />
+                    Width="150"/>
                                             <ComboBox Margin="10 0 0 0"
                     Style="{StaticResource MaterialDesignFilledComboBox}"
                     x:Name="ItemsNumber" SelectionChanged="ItemsNumber_SelectionChanged"
                     materialDesign:HintAssist.Hint="Items No."
-                    Width="100" />
+                    Width="100"/>
 
                                         </StackPanel>
                                         <TextBox x:Name="txtPiecesShopPrice"
@@ -91,7 +103,7 @@
                                         <TextBox x:Name="txtPiecesReducedPrice"
     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
     VerticalAlignment="Top" Margin="0 0 0 10"
-    Width="250" MouseLeave="txtPiecesReducedPrice_MouseLeave"
+    Width="250"
     AcceptsReturn="False"
     TextWrapping="Wrap"
     VerticalScrollBarVisibility="Auto"
@@ -214,13 +226,13 @@
                         <DataGrid x:Name="dgvItems" AutoGenerateColumns="False" 
                           VerticalScrollBarVisibility="Auto" Margin="20 0" HorizontalScrollBarVisibility="Auto">
                             <DataGrid.Columns>
-                                <!--<DataGridTextColumn Binding="{Binding Path=DateBought}" Header="Date bought" IsReadOnly="True"/>-->
+                            <!--<DataGridTextColumn Binding="{Binding Path=CustomerName}" Header="Customer Name" IsReadOnly="True"/>-->
                                 <DataGridTextColumn Binding="{Binding Path=ItemName}" Header="Item Name"  IsReadOnly="True"/>
                                 <DataGridTextColumn Binding="{Binding Path=Price}" Header="Price"  IsReadOnly="True"/>
                                 <DataGridTextColumn Binding="{Binding Path=Quantity}" Header="Quantity"  IsReadOnly="True"/>
-                                <DataGridTextColumn Binding="{Binding Path=Subtotal}" Header="Sub Total"  IsReadOnly="True"/>
+                                <DataGridTextColumn Binding="{Binding Path=SubTotal}" Header="Sub Total"  IsReadOnly="True"/>
                                 <DataGridTextColumn Binding="{Binding Path=Total}" Header="Total"  IsReadOnly="True"/>
-                                <DataGridTextColumn Binding="{Binding Path=ReducedPrice}" Header="Reduced Price"  IsReadOnly="True"/>
+                                <DataGridTextColumn Binding="{Binding Path=ReducedPrice}" Header="Discount"  IsReadOnly="True"/>
                             </DataGrid.Columns>
                         </DataGrid>
 
@@ -356,7 +368,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
                     <TextBlock Text="Reciept" Grid.Row="0" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="White" Padding="10"/>
-                    <WindowsFormsHost Width="400" Grid.Row="1">
+                    <WindowsFormsHost Width="320" Grid.Row="1">
                         <Viewer:ReportViewer x:Name="_reportViewer">
 
                         </Viewer:ReportViewer>

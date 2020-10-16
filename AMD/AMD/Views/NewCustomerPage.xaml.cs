@@ -1,22 +1,14 @@
-﻿using AMD.GargaiTableAdapters;
-using MahApps.Metro.SimpleChildWindow;
-using Microsoft.ReportingServices.Diagnostics.Internal;
+﻿using MahApps.Metro.Controls.Dialogs;
+using Microsoft.Reporting.WinForms;
 using System;
-using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AMD.Views
 {
@@ -26,26 +18,17 @@ namespace AMD.Views
     public partial class NewCustomerPage : Page
     {
 
+        private bool CustomerName = false;
+
+        private bool PrintButtonClicked = false;
+
+        private bool Reciept = true;
+
         double Payment = 0;
 
         public NewCustomerPage()
         {
             InitializeComponent();
-
-            //Storyboard sb = new Storyboard();
-            //sb.FillBehavior = FillBehavior.HoldEnd;
-
-            //var opacityAnimation = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromMilliseconds(200)));
-            //Storyboard.SetTargetProperty(opacityAnimation, new PropertyPath(nameof(Card.Opacity)));
-
-            //sb.Children.Add(opacityAnimation);
-
-            //var translateAnimation = new DoubleAnimation(50, 0, new Duration(TimeSpan.FromMilliseconds(300)));
-            //Storyboard.SetTargetProperty(translateAnimation, new PropertyPath($"{nameof(Card.RenderTransform)}.{nameof(TranslateTransform.X)}"));
-
-            //sb.Children.Add(translateAnimation);
-
-            //_storyboard = sb;
 
         }
 
@@ -59,6 +42,7 @@ namespace AMD.Views
                 Gargai grg = new Gargai();
                 grg.BeginInit();
 
+
                 reportDataSource1.Name = "CustomerReciept";
                 reportDataSource1.Value = grg.Customer;
                 this._reportViewer.LocalReport.DataSources.Add(reportDataSource1);
@@ -69,6 +53,39 @@ namespace AMD.Views
                 GargaiTableAdapters.CustomerTableAdapter customer = new GargaiTableAdapters.CustomerTableAdapter();
                 customer.ClearBeforeFill = true;
                 customer.FillByCustomerID(grg.Customer, txtCustomerID.Text);
+
+                ReportParameterCollection reportParameter = new ReportParameterCollection();
+                reportParameter.Add(new ReportParameter("CustomerName", txtCustomerFullName.Text));
+                if (PaymentType.SelectedIndex == 0)
+                {
+                    reportParameter.Add(new ReportParameter("PaymentType", "Cash"));
+                }
+                else if (PaymentType.SelectedIndex == 1)
+                {
+                    reportParameter.Add(new ReportParameter("PaymentType", "Transfer"));
+                }
+                else if (PaymentType.SelectedIndex == 2)
+                {
+                    reportParameter.Add(new ReportParameter("PaymentType", "Cash & Transfer"));
+                }
+                this._reportViewer.LocalReport.SetParameters(reportParameter);
+
+                this._reportViewer.ShowBackButton = false;
+                this._reportViewer.ShowPageNavigationControls = false;
+                this._reportViewer.ShowParameterPrompts = false;
+                this._reportViewer.ShowFindControls = false;
+                this._reportViewer.ShowZoomControl = false;
+                this._reportViewer.ShowFindControls = false;
+                this._reportViewer.ShowContextMenu = false;
+                this._reportViewer.ShowCredentialPrompts = false;
+                this._reportViewer.ShowDocumentMapButton = false;
+                this._reportViewer.ShowParameterPrompts = false;
+
+                var setUp = this._reportViewer.GetPageSettings();
+                setUp.Margins = new Margins(0, 0, 0, 0);
+                this._reportViewer.SetPageSettings(setUp);
+                //PageSettings pageSettings = new PageSettings();
+                //pageSettings.Margins = new Margins(0,0,0,0);
 
                 _reportViewer.RefreshReport();
                 _isReportViewerLoaded = true;
@@ -110,49 +127,54 @@ namespace AMD.Views
 
         private void SaveItems_Click(object sender, RoutedEventArgs e)
         {
+
             //foreach (var row in dgvItems1.rows)
             //{
 
             //}
-            AMDDataContext db = new AMDDataContext();
 
-                var SaveItem = new Customer();
-                SaveItem.CustomerName = txtCustomerFullName.Text;
+            AMDDataContext db = new AMDDataContext();
+            Customer SaveItem = new Customer();
+
+            if (PrintButtonClicked == true)
+            {
+
                 SaveItem.CustomerID = txtCustomerID.Text;
+                SaveItem.CustomerName = txtCustomerFullName.Text;
                 SaveItem.DateBought = DateTime.Now;
-                SaveItem.ItemName = ItemsToPrint.Text;
-                SaveItem.Price = Convert.ToDouble(txtPiecesShopPrice.Text);
-                SaveItem.Quantity = Convert.ToInt32(ItemsNumber.Text);
                 SaveItem.PaymentType = PaymentType.Text;
                 SaveItem.Cash = txtCash.Text;
                 SaveItem.Transfer = txtTransfer.Text;
                 SaveItem.Bank = Bank.Text;
-                SaveItem.Total = (SaveItem.Price * SaveItem.Quantity);
-                SaveItem.ReducedPrice = Convert.ToDouble(txtReducedPrice.Text);
                 SaveItem.Comment = txtCustomerComment.Text;
 
-                db.Customers.InsertOnSubmit(SaveItem);
-                db.SubmitChanges();
-                MessageBox.Show("Customer successfully saved!");
+                PrintButtonClicked = false;
 
-                var customerid = from p in db.Customers
-                                 select p;
+                Reciept = false;
 
-                dgvItems.ItemsSource = customerid;
+            }
+            else
+            {
 
-                txtCustomerDetailsName.Text = txtCustomerFullName.Text;
+                SaveItem.CustomerID = txtCustomerID.Text;
+                SaveItem.ItemName = ItemsToPrint.Text;
+                SaveItem.DateBought = DateTime.Now;
+                SaveItem.Price = Convert.ToDouble(txtPiecesShopPrice.Text);
+                SaveItem.Quantity = Convert.ToInt32(ItemsNumber.Text);
+                SaveItem.Total = (SaveItem.Price * SaveItem.Quantity);
+                SaveItem.ReducedPrice = Convert.ToDouble(txtReducedPrice.Text);
 
+                //SaveItem.PaymentType = PaymentType.Text;
+                //SaveItem.Cash = txtCash.Text;
+                //SaveItem.Transfer = txtTransfer.Text;
+                //SaveItem.Bank = Bank.Text;
+                //SaveItem.Total = (SaveItem.Price * SaveItem.Quantity);
+                //SaveItem.ReducedPrice = Convert.ToDouble(txtReducedPrice.Text);
+                //SaveItem.Comment = txtCustomerComment.Text;
 
-                txtPaymenttype.Text = PaymentType.Text;
+                //db.SubmitChanges();
 
-                if (Bank.SelectedIndex == -1)
-                {
-                    txtBank.Text = "No Bank";
-                }
-                else
-                {
-                    txtBank.Text = Bank.Text;
-                }
+                System.Windows.Forms.MessageBox.Show("Customer successfully saved!");
 
                 double PiecesPrice = Convert.ToDouble(txtPiecesShopPrice.Text);
 
@@ -163,15 +185,85 @@ namespace AMD.Views
                 Payment += TotalPayment;
 
                 txtTotal.Text = Payment.ToString();
-                //ItemsToPrint.ItemsSource = query.ToList();
-                //ItemsToPrint.DisplayMemberPath = "ItemName";
-                //ItemsToPrint.SelectedValuePath = "Id";
+
+                txtCustomerDetailsName.Text = txtCustomerFullName.Text;
+
+                txtPaymenttype.Text = PaymentType.Text;
+            }
+
+                if (Bank.SelectedIndex == -1)
+                {
+                    txtBank.Text = "No Bank";
+                }
+                else
+                {
+                    txtBank.Text = Bank.Text;
+                }
+
+                db.Customers.InsertOnSubmit(SaveItem);
+                db.SubmitChanges();
+
+
+            var customerid = from p in db.Customers
+                                 select p;
+            var FilterCustomer = customerid.Where(o => o.CustomerID.StartsWith(txtCustomerID.Text));
+
+            dgvItems.ItemsSource = FilterCustomer;
+
+            //ICollectionView linqview = CollectionViewSource.GetDefaultView(customerid);
+            //linqview.Filter = new Predicate<object>(o =>
+            //((Customer)o).CustomerID.StartsWith(txtCustomerID.Text));
+
+               
+
         }
+
 
         private void ItemsToPrint_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            //if (string.IsNullOrWhiteSpace(txtCustomerFullName.Text))
+            //{
+            //    MessageBox.Show("Customer Name cannot be empty!", "Item Selection", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            //    return;
+            //}
             //ItemsNumber.Items.Clear();
+            if (string.IsNullOrEmpty(this.txtCustomerFullName.Text))
+            {
+                return;
+            }
+            else
+            {
+                if (CustomerName == false)
+                {
+                    return;
+                }
+                else
+                {
+                Random generator = new Random();
+                string r = generator.Next(0, 999999).ToString("D6");
+
+                txtCustomerID.Text = "gargai-" + r;
+                }
+
+                CustomerName = false;
+
+            }
+
+            if (ItemsNumber.SelectedValue == null)
+            {
+                txtPiecesReducedPrice.Text = "0";
+            }
+            else
+            {
+                int selectedValue = Convert.ToInt32(ItemsNumber.SelectedValue.ToString());
+                double priceReduced = Convert.ToDouble(txtPiecesReducedPrice.Text);
+
+                double price = priceReduced * selectedValue;
+
+                txtReducedPrice.Visibility = Visibility.Visible;
+
+                txtReducedPrice.Text = price.ToString();
+            }
 
             if (ItemsNumber.SelectedIndex == -1)
             {
@@ -196,23 +288,6 @@ namespace AMD.Views
                 return;
             }
 
-        }
-
-        private void txtFullName_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(this.txtCustomerFullName.Text))
-            {
-                txtCustomerID.Text = string.Empty;
-                PaymentType.Items.Clear();
-            }
-            else
-            {
-                Random generator = new Random();
-                string r = generator.Next(0, 999999).ToString("D6");
-
-                txtCustomerID.Text = "gargai-" + r;
-
-            }
         }
 
         private void PaymentType_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -249,26 +324,6 @@ namespace AMD.Views
             txtItemsTotal.Text = totalitems.ToString();
         }
 
-        private void txtPiecesReducedPrice_MouseLeave(object sender, MouseEventArgs e)
-        {
-            if (ItemsNumber.SelectedValue == null)
-            {
-                txtPiecesReducedPrice.Text = "0";
-            }
-            else
-            {
-            int selectedValue = Convert.ToInt32(ItemsNumber.SelectedValue.ToString());
-            double priceReduced = Convert.ToDouble(txtPiecesReducedPrice.Text);
-
-            double price = priceReduced * selectedValue;
-
-            txtReducedPrice.Visibility = Visibility.Visible;
-
-            txtReducedPrice.Text = price.ToString();
-            }
-
-        }
-
         //private void PrintItems_ClickAsync(object sender, RoutedEventArgs e)
         //{
         //    if (e.OriginalSource is Button button)
@@ -284,17 +339,33 @@ namespace AMD.Views
 
         private void PrintItems_Click(object sender, RoutedEventArgs e)
         {
+            if ((PaymentType.SelectedIndex == -1) && (string.IsNullOrWhiteSpace(txtCash.Text) || string.IsNullOrWhiteSpace(txtTransfer.Text)))
+            {
+                System.Windows.Forms.MessageBox.Show("Payment Type, Cash or Transfer cannot be empty!");
+                return;
+            }
+
+            PrintButtonClicked = true;
 
             ReportGrid.Visibility = Visibility.Visible;
             _reportViewer.Load += _ReportViewer_Load;
 
+            if (Reciept == false)
+            {
+                return;
+            }
+            SaveItems_Click(this, new RoutedEventArgs());
+
+
             //_storyboard.Begin(Card);
+
+            //PrintButtonClicked = false;
         }
 
         private void Reciept_OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
-            {
+        {
 
-            }
+        }
 
         private void MainPage_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -304,6 +375,55 @@ namespace AMD.Views
         private void ReportGrid_LayoutUpdated(object sender, EventArgs e)
         {
             this.InvalidateVisual();
+        }
+
+        private void txtCustomerFullName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CustomerName = true;
+        }
+
+        private void RemoveCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Are you sure you want delete this Customer?", "Delete Customer", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+
+            try
+            {
+            AMDDataContext db = new AMDDataContext();
+            var DeleteCustomer = from p in db.Customers
+                                 where p.CustomerID == txtCustomerID.Text
+                                 select p;
+
+                foreach (var customer in DeleteCustomer)
+                {
+                     db.Customers.DeleteOnSubmit(DeleteCustomer.FirstOrDefault());
+                     db.SubmitChanges();
+                }
+
+                System.Windows.Forms.MessageBox.Show("Customer deleted successfully!", "AMD Enterprise", MessageBoxButtons.OK);
+
+                txtCustomerFullName.Text = string.Empty;
+
+                txtCustomerID.Text = string.Empty;
+
+            var customerid = from p in db.Customers
+                             select p;
+            var FilterCustomer = customerid.Where(o => o.CustomerID.StartsWith(txtCustomerID.Text));
+
+            dgvItems.ItemsSource = null;
+            }
+            catch (Exception a)
+            {
+
+                System.Windows.Forms.MessageBox.Show(a.Message);
+            }
+            }
+            else
+            {
+                return;
+            }
         }
 
 
@@ -322,4 +442,4 @@ namespace AMD.Views
         //}
 
     }
-    }
+}

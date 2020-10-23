@@ -36,79 +36,98 @@ namespace AMD.Views
             }
         }
 
-        private async void Login_Click(object sender, RoutedEventArgs e)
+        private void Login_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(UserName.Text) || string.IsNullOrWhiteSpace(Password.Password))
             {
                 MessageBox.Show("Fields cannot be empty!");
                 return;
             }
+            else
+            {
 
                 Prog.Visibility = Visibility.Visible;
-
-                await Task.Delay(1000);
-
-            UserName.IsEnabled = false;
-            Password.IsEnabled = false;
-            Login.IsEnabled = false;
-
-                var db = new AMDDataContext();
-
-                var CheckUsers = from p in db.Users
-                                 where p.Username == UserName.Text && p.Password == Password.Password
-                                 select p;
-
-                if (CheckUsers.Count() == 0)
+              
+                UserName.IsEnabled = false;
+                Password.IsEnabled = false;
+                Login.IsEnabled = false;
+                try
                 {
-                UserName.IsEnabled = true;
-                Password.IsEnabled = true;
-                Login.IsEnabled = true;
-                Prog.Visibility = Visibility.Collapsed;
-                //await this.ShowMessageAsync("","");
-                MessageBox.Show("This User does not exist!, Please try again");
+
+                    Task.Run(() =>
+
+                    {
+                        Thread.Sleep(1500);
+
+                        var db = new AMDDataContext();
+
+                        var CheckUsers = from p in db.Users
+                                         where p.Username == UserName.Text && p.Password == Password.Password
+                                         select p;
+                        this.Dispatcher.Invoke(() =>
+                        {
+                           
+                                if (CheckUsers.Count() == 0)
+                                {
+                                    UserName.IsEnabled = true;
+                                    Password.IsEnabled = true;
+                                    Login.IsEnabled = true;
+                                    Prog.Visibility = Visibility.Collapsed;
+                                    //await this.ShowMessageAsync("","");
+                                    MessageBox.Show("This User does not exist!, Please try again");
+
+                                }
+
+                                else
+                                {
+                                    var navigation = NavigationServiceEx.Instance;
+                                    UserName.IsEnabled = true;
+                                    Password.IsEnabled = true;
+                                    Login.IsEnabled = true;
+                                    Prog.Visibility = Visibility.Collapsed;
+
+                                    //navigation.Navigate(typeof(MainPage));
+
+                                    foreach (var user in CheckUsers)
+                                    {
+                                        switch (user.Role)
+                                        {
+                                            case "Admin":
+                                                navigation.Navigate(typeof(MainPage));
+                                                var nc = new NewCustomerPage();
+                                                nc.txtCollector.Text = user.FullName;
+                                                break;
+
+                                            case "User":
+                                                navigation.Navigate(typeof(UserPage));
+                                                break;
+
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                }
+                        }
+                        );
+
+                    }
+
+                    );
 
                 }
-                //if ((UserName.Text == "mustapha") && (Password.Password == "yusuf"))
-                //{
-                //    var navigation = NavigationServiceEx.Instance;
-                //    navigation.Navigate(typeof(MainPage));
-                //    // or
-                //    //navigation.Navigate(new Uri("Views/MainPage.xaml", UriKind.RelativeOrAbsolute));
-                //}
-                else
+                catch (Exception a)
                 {
-                var navigation = NavigationServiceEx.Instance;
-                UserName.IsEnabled = true;
-                Password.IsEnabled = true;
-                Login.IsEnabled = true;
-                Prog.Visibility = Visibility.Collapsed;
 
-                //navigation.Navigate(typeof(MainPage));
-
-                foreach (var user in CheckUsers)
-                    {
-                        switch (user.Role)
-                        {
-                            case "Admin":
-                                navigation.Navigate(typeof(MainPage));
-                                var nc = new NewCustomerPage();
-                                nc.txtCollector.Text = user.FullName;
-                                break;
-
-                            case "User":
-                                navigation.Navigate(typeof(UserPage));
-                                break;
-
-                            default:
-                                break;
-                        }
-                    }
+                    MessageBox.Show(a.Message);
                 }
             }
+
+        }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             UserName.Focus();
         }
+
     }
 }

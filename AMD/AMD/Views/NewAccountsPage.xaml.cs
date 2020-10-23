@@ -27,7 +27,9 @@ namespace AMD.Views
 
         private void SaveItem_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtFullName.Text) || string.IsNullOrWhiteSpace(txtUserName.Text)
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtFullName.Text) || string.IsNullOrWhiteSpace(txtUserName.Text)
                 || string.IsNullOrWhiteSpace(txtPassword.Text))
             {
                 MessageBox.Show("These Fields cannot be empty!");
@@ -64,6 +66,13 @@ namespace AMD.Views
                     MessageBox.Show("User successfully added as User!");
                 }
             }
+            }
+            catch (Exception a)
+            {
+
+                MessageBox.Show(a.Message);
+            }
+            
         }
     }
 }

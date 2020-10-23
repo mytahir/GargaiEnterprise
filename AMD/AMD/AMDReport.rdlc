@@ -864,7 +864,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>4.76389in</Top>
+            <Top>4.73611in</Top>
             <Left>0.03473in</Left>
             <Height>0.17708in</Height>
             <Width>1.30556in</Width>
@@ -1092,7 +1092,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=FormatDateTime(DateString, DateFormat.GeneralDate)</Value>
+                    <Value>=TimeOfDay()</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -1389,17 +1389,16 @@
               </Border>
             </Style>
           </Rectangle>
-          <Textbox Name="Textbox17">
+          <Textbox Name="CustomerID2">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="*"+Fields!CustomerID.Value+"*"</Value>
+                    <Value>=First(Fields!CustomerID.Value, "CustomerReciept")</Value>
                     <Style>
-                      <FontFamily>Free 3 of 9</FontFamily>
-                      <FontSize>20pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1408,11 +1407,11 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox17</rd:DefaultName>
-            <Top>6.8368in</Top>
-            <Left>0.05904in</Left>
-            <Height>0.26042in</Height>
-            <Width>2.68055in</Width>
+            <rd:DefaultName>CustomerID</rd:DefaultName>
+            <Top>7.12724in</Top>
+            <Left>0.03474in</Left>
+            <Height>0.23611in</Height>
+            <Width>2.71527in</Width>
             <ZIndex>23</ZIndex>
             <Style>
               <Border>
@@ -1424,16 +1423,17 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="CustomerID2">
+          <Textbox Name="Textbox17">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!CustomerID.Value, "CustomerReciept")</Value>
+                    <Value>="*"+Fields!CustomerID.Value+"*"</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontFamily>Free 3 of 9 Extended</FontFamily>
+                      <FontSize>22pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1442,11 +1442,11 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>CustomerID</rd:DefaultName>
-            <Top>7.11111in</Top>
-            <Left>0.05904in</Left>
-            <Height>0.23611in</Height>
-            <Width>2.69097in</Width>
+            <rd:DefaultName>Textbox17</rd:DefaultName>
+            <Top>6.79514in</Top>
+            <Left>0.03473in</Left>
+            <Height>0.28002in</Height>
+            <Width>2.71528in</Width>
             <ZIndex>24</ZIndex>
             <Style>
               <Border>
@@ -1459,14 +1459,14 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>7.40501in</Height>
+        <Height>7.41543in</Height>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Body>
-      <Width>2.80084in</Width>
+      <Width>2.81126in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>

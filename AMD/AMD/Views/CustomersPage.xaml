@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:AMD.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CustomersPage" Loaded="Page_Loaded">
+      Title="Customers Page" Loaded="Page_Loaded">
 
     <!--<Page.Resources>
         <Style TargetType="{x:Type DataGridCell}">
@@ -30,18 +30,51 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <ComboBox Margin="10 10 10 10" Grid.Column="0" HorizontalAlignment="Left"
+            <StackPanel Orientation="Horizontal">
+                 <ComboBox Margin="10" Grid.Column="0" HorizontalAlignment="Left"
+                    Style="{StaticResource MaterialDesignFilledComboBox}"
+                    x:Name="CustomersSelectionType" SelectionChanged="CustomersSelectionType_SelectionChanged"
+                    materialDesign:HintAssist.Hint="Selection Type" 
+                    Width="150" Height="40" ItemStringFormat="{}{0:dd/MM/yyyy}" />
+            
+            <!--<ComboBox Margin="10" Grid.Column="0" HorizontalAlignment="Left"
                     Style="{StaticResource MaterialDesignFilledComboBox}"
                     x:Name="CustomersByDate" SelectionChanged="CustomersByDate_SelectionChanged"
                     materialDesign:HintAssist.Hint="Select Date" 
                     Width="150" ItemStringFormat="{}{0:dd/MM/yyyy}" />
 
-            <ComboBox Margin="180 10 10 10" Grid.Column="0" HorizontalAlignment="Left"
+            <ComboBox Margin="10" Grid.Column="0" HorizontalAlignment="Left"
                     Style="{StaticResource MaterialDesignFilledComboBox}"
                     x:Name="CustomersByID"
                     materialDesign:HintAssist.Hint="Select ID" 
                     Width="150" SelectionChanged="CustomersByID_SelectionChanged"
-                    ItemStringFormat="{}{0:dd/MM/yyyy}"/>
+                    ItemStringFormat="{}{0:dd/MM/yyyy}"/>-->
+
+                <TextBox x:Name="txtSearchByID" Margin="0,15,0,0"
+    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+    VerticalAlignment="Top" HorizontalAlignment="Left"
+    AcceptsReturn="False" Width="260"
+    TextWrapping="Wrap"
+    VerticalScrollBarVisibility="Auto"
+    materialDesign:HintAssist.Hint="Search ID"
+    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
+
+                <Button VerticalAlignment="Center" Margin="10"
+  Style="{StaticResource MaterialDesignIconButton}"
+  ToolTip="Search ID" x:Name="SearchID" Click="SearchID_Click">
+                    <materialDesign:PackIcon Kind="Magnify"
+                                             Width="25" Height="25"
+                                             VerticalAlignment="Center"/>
+                </Button>
+            </StackPanel>
+
+
+            <Button x:Name="GeneratePDF"  Grid.Column="1" HorizontalAlignment="Right"
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+    Width="120" ToolTip="Generate PDF" Margin="10 10 20 10"
+    Click="GeneratePDF_Click">
+                Export As PDF
+            </Button>
         </Grid>
         
         <Grid Grid.Row="1">

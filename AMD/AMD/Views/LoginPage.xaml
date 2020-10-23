@@ -47,51 +47,12 @@
             </Border>
         </Grid>
 
-        <!--<Path Grid.Column="0" Stretch="Fill" >
-                        <Path.Data>
-                            m160.20002,191.95501l101,0l0,0c14.78076,2 20.99999,64.48571 20.99999,146.5c0,82.01429 -7.21923,151.5 -20.99999,150.5l-101,0l0,-297z</Path.Data>
-                        <Path.Fill>
-                            <ImageBrush ImageSource="Images/AMD.jpg" Stretch="Fill" Opacity=".7"/>
-                        </Path.Fill>
-                    </Path>-->
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 40 0 0" Grid.Column="1">
-            <Border Background="Black" BorderThickness="4" CornerRadius="50"
-                             Width="80" Height="80"
-                           >
+     
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 40 0 0" Grid.Column="1">
 
-                <Border.BorderBrush>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="Orange" Offset="0.50" />
-                        <GradientStop Color="Navy" Offset="0.50" />
-
-                    </LinearGradientBrush>
-                </Border.BorderBrush>
-
-
-                <Grid 
-                          Width="60" Height="60">
-
-
-                    <TextBlock HorizontalAlignment="Center"
-                                   VerticalAlignment="Center">
-                        <Run Text="A" Foreground="Yellow" FontSize="20" FontWeight="Bold"/>
-                        <Run Text="M" Foreground="Blue" FontSize="20" FontWeight="Bold"/>
-                        <Run Text="D" Foreground="Yellow" FontSize="20" FontWeight="Bold"/>
-                    </TextBlock>
-
-                    <!--<Path Data="m308.00063,368.2409l24.39999,-18.99997l73.19994,0l24.40008,18.99997l-24.40008,19.00004l-73.19994,0c-8.13333,-6.33335 -16.26666,-12.66669 -24.39999,-19.00004z" 
-                                  HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
-                    <!--<Path Data="m292.53496,400.36499l29.4375,-41l98.12499,0l29.43749,41l-156.99997,0z" 
-                          Stroke="Black" Fill="Black"
-                          />-->
-                </Grid>
-            </Border>
-            <Grid>
-                <TextBlock Text="GARGAI" HorizontalAlignment="Center"
-                                       VerticalAlignment="Center" Foreground="Black"
-                                       Style="{StaticResource   MaterialDesignHeadline6TextBlock}"/>
-            </Grid>
-        </StackPanel>
+            <Image  Source="/Images/AMDLogo.png"
+                    Width="80" Height="80"/>
+        </Grid>
 
 
         <StackPanel Grid.Column="1"
@@ -144,8 +105,7 @@ KeyDown="Password_KeyDown" Grid.ColumnSpan="2"/>
                               FlowDirection="RightToLeft">
                     <Button x:Name="Login" Click="Login_Click"
     Style="{StaticResource MaterialDesignRaisedDarkButton}"
-    Width="100" ToolTip="Log into your Account" Margin="0 0 0 0"
-                            Command="{Binding LoginCommand}">
+    Width="100" ToolTip="Log into your Account" Margin="0 0 0 0">
                         Login
                     </Button>
 

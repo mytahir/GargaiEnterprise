@@ -164,16 +164,6 @@ namespace AMD.Views
                 SaveItem.Total = (SaveItem.Price * SaveItem.Quantity);
                 SaveItem.ReducedPrice = Convert.ToDouble(txtReducedPrice.Text);
 
-                //SaveItem.PaymentType = PaymentType.Text;
-                //SaveItem.Cash = txtCash.Text;
-                //SaveItem.Transfer = txtTransfer.Text;
-                //SaveItem.Bank = Bank.Text;
-                //SaveItem.Total = (SaveItem.Price * SaveItem.Quantity);
-                //SaveItem.ReducedPrice = Convert.ToDouble(txtReducedPrice.Text);
-                //SaveItem.Comment = txtCustomerComment.Text;
-
-                //db.SubmitChanges();
-
                 System.Windows.Forms.MessageBox.Show("Customer successfully saved!");
 
                 double PiecesPrice = Convert.ToDouble(txtPiecesShopPrice.Text);
@@ -221,18 +211,13 @@ namespace AMD.Views
 
         private void ItemsToPrint_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //if (string.IsNullOrWhiteSpace(txtCustomerFullName.Text))
-            //{
-            //    MessageBox.Show("Customer Name cannot be empty!", "Item Selection", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            //    return;
-            //}
-            //ItemsNumber.Items.Clear();
             if (string.IsNullOrEmpty(this.txtCustomerFullName.Text))
             {
                 return;
             }
             else
             {
+                
                 if (CustomerName == false)
                 {
                     return;
@@ -255,6 +240,8 @@ namespace AMD.Views
             }
             else
             {
+                //ItemsNumber.SelectedValue = -1;
+
                 int selectedValue = Convert.ToInt32(ItemsNumber.SelectedValue.ToString());
                 double priceReduced = Convert.ToDouble(txtPiecesReducedPrice.Text);
 
